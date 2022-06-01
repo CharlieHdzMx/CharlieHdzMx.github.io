@@ -5,10 +5,11 @@ layout: resume
 
 `July/2021-Current`
 __Embedded Software Engineer__, Innolux
-
+- SWE3 owner process for ASPICE audits.
 - Design of SW Componentes using Enterprise Architecture.
 - Configuracion of Autosar SWCs using DaVinci Developer.
 - Configuracion of Autosar BSW using DaVinci Configurator and MICROSAR from Vector.
+- Candela RID and Diagnostics definition changes.
 - Unit Test using Tessy.
 
 `March/2018-July/2021`
