@@ -6,8 +6,9 @@ Passionated Software Engineer with experience in the Automotive Industry. Intere
 
 Nevertheless, always with an open mind to new technologies, industries and solutions.
 
-## Current Interests and Projects:
+## Interests and Projects:
 
 - Automotive C/C++ and Autosar ECUs
 - [GitHub Pages](https://charliehdzmx.github.io)
 - [GitHub](https://github.com/CharlieHdzMx/CharlieHdzMx)
+- MechLyxn, Artificial Intelligence base for diagnostic of automovile ECU issues from user input that can be extended to diagnostic OBDII.
