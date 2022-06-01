@@ -11,4 +11,5 @@ Nevertheless, always with an open mind to new technologies, industries and solut
 - Automotive C/C++ and Autosar ECUs
 - [GitHub Pages](https://charliehdzmx.github.io)
 - [GitHub](https://github.com/CharlieHdzMx/CharlieHdzMx)
-- MechLyxn, Artificial Intelligence base for diagnostic of automovile ECU issues from user input that can be extended to diagnostic OBDII.
+- [MechLyxn](https://github.com/CharlieHdzMx/MechLynx) Qt C++ Artificial Intelligence project to diagnosis automotive failures based on knowledge base and client inputs.
+  This project can have extensions to support OBD and DTCs diagnosis.
