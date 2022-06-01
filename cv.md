@@ -1,7 +1,7 @@
 ---
 layout: resume
 ---
-# Occupation
+# Jobs
 
 `July/2021-Current`
 __Embedded Software Engineer__, Innolux
