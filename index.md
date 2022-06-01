@@ -2,12 +2,12 @@
 layout: page
 excerpt: "About Me..."
 ---
+Passionated Software Engineer with experience in the Automotive Industry. Interested in the state of the art of design, development, and test of technology based on C/C++, Autosar, and Matlab/Simulink. 
 
-I am Sofware Enginner with experience on Automotive, C/C++, Autosar, and Matlab/Simulink. Love to write technical articles, exercise and travel. 
+Nevertheless, always with an open mind to new technologies, industries and solutions.
 
 ## Current Interests and Projects:
 
 - Automotive C/C++ and Autosar ECUs
-- Article writing on [GearsTech Web Side](http://gearstech.com.mx/)
-- [GitHub Pages](https://charliegearstech.github.io/)
-- [GitHub](https://github.com/CharlieGearsTech/)
+- [GitHub Pages](https://charliehdzmx.github.io)
+- [GitHub](https://github.com/CharlieHdzMx/CharlieHdzMx)
