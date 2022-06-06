@@ -5,6 +5,7 @@ layout: resume
 
 `July/2021-Current`
 __Embedded Software Engineer__, Innolux
+- Software Detailed Design and code owner process for ASPICE audits.
 - SWE3 owner process for ASPICE audits.
 - Design of SW Componentes using Enterprise Architecture.
 - Configuracion of Autosar SWCs using DaVinci Developer.
