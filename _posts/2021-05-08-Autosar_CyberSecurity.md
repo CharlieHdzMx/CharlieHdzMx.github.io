@@ -14,10 +14,12 @@ category: blog
 
 The principal concepts describing Cybersecurity on automotive ECUs are:
 
-* **Authenticity**, the determination than the component sending data is the one expected.
+* **Authenticity**, the determination than the user/component sending data is the one expected (verification it is saying the truth).
 * **Confidentiality** ensures that communication between 2 components cannot be intercepted by a third one.
 * **Integrity** ensures that data received by one entity was not modified by another entity during the transmission.
 * **Availability** ensures that one entity keeps its stable state during malicious attacks.
+* **Authorization** the control access and organization of data when a user is identified and authentificated.
+* **Auditing**, verification and monitoring of the security policy.
 
 The main use case of Cyber security in the Automotive industry are:
 
