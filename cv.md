@@ -47,7 +47,6 @@ Mechatronics Engineer degree.
 __CETI Colomos__
 Mechanic Technologist degree.
 
-#
 ## Courses
 - ISTQB® Certified Tester - Foundation Level, ID 22-CTFL-212744-12.
 - Advanced Technical Test Analyst, ID 22-CTAL-TTA-215680-12.
