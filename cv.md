@@ -33,7 +33,7 @@ __Software Engineer__, KAL
 - Proficient in the migration plan for C++98 modules to C++11 delivering a document of source code and tool dependency changes.
 -  Close technical support to international clients.
 
-## Education
+# Education
 
 `2016 – 2016
 __University of Oklahoma__
@@ -47,7 +47,7 @@ Mechatronics Engineer degree.
 __CETI Colomos__
 Mechanic Technologist degree.
 
-## Courses
+# Courses
 - ISTQB® Certified Tester - Foundation Level, ID 22-CTFL-212744-12.
 - Advanced Technical Test Analyst, ID 22-CTAL-TTA-215680-12.
 - **Vector, MICROSAR Functional Safety**.
