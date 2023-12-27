@@ -4,34 +4,27 @@ layout: resume
 # Jobs
 
 `July/2021-Current`
-__Embedded Software Engineer__, Innolux
-- Software Detailed Design and code owner process for ASPICE audits.
-- SWE3 owner process for ASPICE audits.
-- Design of SW Componentes using Enterprise Architecture.
-- Configuracion of Autosar SWCs using DaVinci Developer.
-- Configuracion of Autosar BSW using DaVinci Configurator and MICROSAR from Vector.
-- Candela RID and Diagnostics definition changes.
-- Unit Test using Tessy.
+__Software Engineer__, Innolux
+- Responsible for Design and Development process ownership in ASPICE projects developing using C.
+- Software Engineer specializing in configuring BSW and SWCs with expertise in the Vector toolchain (Davinci, Candela, Canoe, …) and Enterprise Architecture for VW projects.
+- Co-owner of the Software Cybersecurity process with expertise in integrating E2E features.
+- More skills: Tessy.
 
 `March/2018-July/2021`
-__Embedded Software Engineer__, Osram-Continental
+__Software Engineer__, Continental
 
-- Software Engineer involved in the Research and Development of Ford ECUs related to Lighting control.
-- Autosar integration of on-vehicle telematics feature to connect the ECU to the OEM cloud using Da Vinci cfg, Elektrobit Tresos, and Autosar Builder.
-- Knowledge related to protocols: CAN, CAN-FD, LIN, UDS.
-- Experience designing and developing SW components based on ANSI-C following MISRA 2012.
-- Proficient Matlab/Simulink design and development with custom tools to auto-generate C code.
-- Experience with Automotive Software process and features: Functional Safety, CyberSecurity, Lifecycle, ASPICE, Requirements, Design,Implementation and Test.
-- Trained about Autosar, MICROSAR Safety, Security, Multicore, and Ethernet.
-- Involved in the whole Software development cycle: Requirements (DOORS), Design, Implementation, and Testing.
-- Support risk assessment, SW activities planning, work-product creation, and direct communication with the client.
+- Experienced in integrating Autosar configuration for OTA software download, CAN, UDS, and LIN using the Vector toolchain (Davinci, Candela, Canoe, …).
+- Engaged in the entire software development cycle for SWCs using C, DOORS and Matlab/Simulink.
+- Experience with Automotive Software process and features: Functional Safety, CyberSecurity, ASPICE.
+- Facilitate risk assessment, plan software activities, create work products, and communication with clients.
+- More skills: Git, Jira, Perforce, IMS.
 
 `Octuber/2017-March/2018`
 __Software Engineer__, GearsTech
 
-- Design and developed an application to program ATMega328 and STM32F4 to drive led lights using C++, Qt, and Serial communication obtaining a commercial version. This project was an E/E unit composed of a microcontroller that can be reflashed several times to control power lines to change the RGB intensity for each string with a predefined sequence.
-- Publish +100 contents regarding C++, Qt, Embedded Systems, and Artificial Intelligence for business branding.
-- Included on projects regarding BitCoin Manager Application Reverse Engineering and Game development based on C++/Qt.
+- Freelancer specializing in the design and development of custom LED driver applications, utilizing ATMega328 and STM32F4, with proficiency in C++, and Qt.
+- Support projects regarding BitCoin manager app, and Game development based on C++/Qt.
+- More skills: GDB, Git, QML, GCC.
 
 `March/2017- Octuber2017`
 __Software Engineer__, KAL
@@ -39,7 +32,6 @@ __Software Engineer__, KAL
 - Develop one project-based on C++ code and NDC protocol by creating Software to remotely reset the Encrypted Pin Pad and command cash dispenser status report.
 - Proficient in the migration plan for C++98 modules to C++11 delivering a document of source code and tool dependency changes.
 -  Close technical support to international clients.
-
 
 ## Education
 
@@ -57,13 +49,15 @@ Mechanic Technologist degree.
 
 #
 ## Courses
-- March 2020, **Vector, MICROSAR Functional Safety**.
-- March 2020, **Vector, MICROSAR CyberSecurity**.
-- March 2020, **Vector, MICROSAR MultiCore**.
-- March 2020, **Vector, MICROSAR Ethernet**.
-- June 2019, **Elektrobit, Autosar Basic**.
-- January 2018, **Intel Guadalajara, Artificial Intelligence using Matlab**.
-- September 2020, **CppCon, C++ Conference 2020- Training and Talks**.
+- ISTQB® Certified Tester - Foundation Level, ID 22-CTFL-212744-12.
+- Advanced Technical Test Analyst, ID 22-CTAL-TTA-215680-12.
+- **Vector, MICROSAR Functional Safety**.
+- **Vector, MICROSAR CyberSecurity**.
+- **Vector, MICROSAR MultiCore**.
+- **Vector, MICROSAR Ethernet**.
+- **Elektrobit, Autosar Basic**.
+- **Intel Guadalajara, Artificial Intelligence using Matlab**.
+- **CppCon, C++ Conference 2020- Training and Talks**.
 
 <!-- ### Footer
 
