@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Qt Image
-excerpt: Description of a application using Qt command classes
+title: Autosar Services
+excerpt: Autosar Services
 modified: 5/07/2021, 9:00:24
 tags:
-  - Qt
-  - Cpp
+  - Autosar
+  - Automotive
 comments: true
 category: blog
 ---
-![[Pasted image 20231227111913.png]]
+The system services cluster offers a standardized operating system and ECUspecific services. For example, watchdog manager, OS manager, Timers, Errors, and ECU states.
