@@ -10,3 +10,8 @@ tags:
 comments: true
 category: blog
 ---
+
+# Introduction
+Communication services are a group of modules for all vehicle network communication (CAN, Ethernet, FlexRay, etc). These services interface with HW abstraction and diagnostics BSW modules. They also provide communication management services for SWCs and BSW.
+
+# PDU and Signals
