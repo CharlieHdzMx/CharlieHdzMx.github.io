@@ -116,7 +116,42 @@ Mixed ASIL level systems can use all Safety models excepting SafeBSW. Again, Saf
 The changes of **OS context** can occur when a mixed ASIL level system is using both Safe BSW and non-Safe BSWM. The following figure shows a system with ASIL partitions and QM partitions:
 
 ![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/27363240-79f2-4586-ad65-8c1b1936b209)
+QM SWCs shall change the OS context when they require interaction with Safe BSW; ASIL SWCs shall change the OS context when they require interaction with QM BSW.
 
+Since OS Context changes consume CPU load and memory, the distribution of SWCs and interaction/dependencies with other ASIL level SWCs shall be well defined to minimize the frequency of OS Context changes. To decide which BSW to use, either Safe or not, depends on the ratio of ASIL SWCs/QM SWCs. However, due to trusted functions, the context change, overhead and transition time is faster on Safe BSW.
+
+Safe BSW contains SafeNvM. SafeNvM provides safety features such as detection of corrupted or lost NVM blocks. Nonetheless, SafeNvM cannot ensure that all data are saved correctly in special cases such as having a reset before the stack is notified to write the NVM block.
+
+SafeBSW contains SafeEcuM. SafeEcuM corrects the post-build configuration distribution, corrects initialization issues and performs resets if necessary.
+
+## SafeOS
+
+SafeOS provides safety against memory and timing failures. SafeOs supports FFI strategies for single and multiple cores.
+
+Memory failures can be invalid pointers, stack overflow, writing invalid locations.
+
+Timing failures can be infinite cycles, frequent interruptions, long executions that affect scheduling time.
+
+SafeOs solve memory and timing failures by:
+
+1. Memory partitions that depend on the PS application and MPU (Memory Protection Unit) protection.
+2. Stack protection, sentinels and indicators that protect the stack from overflows or underflows.
+3. Timing protection, time monitoring and application termination.
+
+SafeOs contains mechanism to solve memory/timing failures such as:
+
+1. **MPU** SelfTest, OS context changes produce reset to MPU, therefore it is needed for MPU self test during initialization.
+2. **Memory Protection**
+3. **Timing protection**
+4. **Schedule table**.
+5. **Safe context switching**
+6. **Application termination**.
+7. **Reset of Individual Partitions**
+8. **Inter-OS application communication**
+
+## Timing Protection
+
+Timing protection uses execution budgets to limit the time that a task can last without affecting the schedule. For example, in the following figure, Task 1 has been delayed due Task2 and Task 3 calls. This delay causes a Deadline Violation which will call a protection hook. Protection Hook is a function that determines actions when a delay is present. The Deadline violation monitoring, then, is performed by the Application OS only for elements that have a locking deadline or execution budget.
 ![05](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/9260b534-3cac-49ae-82c0-3c60ee7a3728)
 
 ![06](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/b91e6954-e70e-4c0b-965a-44b6bee49a4b)
