@@ -254,12 +254,61 @@ The **Fault Tolerance Time Interval** (FTTI) is the failure duration until the s
 
 ![10](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/293dd805-6796-4e5a-9b77-f6c5fe211060)
 
+## SafeE2E
+Safe E2E protection solves failures during communication between ECUs. Some E2E failures are:
+1. Lost messages
+2. Delayed messages
+3. Incorrect insertion of messages.
+4. Undesired duplication of message
+5. Message corruption
+
+The principal ways that Safe E2E solves these issues are based on:
+1. CRC: Numeric value based on the message content. CRC detects message corruption.
+2. Sequence counter: Undesired duplication message counter.
+3. Receptor side timer to determine if a message got lost.
+
+These solutions can be grouped together into two main safe mechanisms: Protection Wrapper Solution and Transformer Solution.
+
+### E2E Protection Wrapper
+
+E2E Protection Wrapper (**E2E PW**) overwrites the traditional RTE function Rte_write and Rte_read for its own E2E PW wrapper (E2EPW_Write and E2EPW_Read). To do this, E2E PW needs the E2E and CRC libraries, and it only works for conventional I-PDUs.
+
+E2E PW is an intermediate entity between SWCs and RTE. When E2E transmission is required, PW attachs the counter and CRC to the message and forward this message to RTE. Otherwise, when E2E reception is required, the E2E PW takes the message and processes the CRC and counter before passing the message to the SWC. Aditionally, while intermediating messages between SWC and RTE, E2E PW can report the status of the transported messages.
+
 ![11](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/f47884fa-aaaf-40a7-b01c-82fadeed9fa3)
 
+### Transformer Solutions
+
+Autosar specs dictate that E2E cannot be processed inside BSW, due BSW modules alone cannot be ASIL compliance and E2E protection brings private data from SWCs. The RTE commands communication service clusters to permit the E2E communication. These services process the information from RTE transformers. RTE transformers are responsible to serialize(complex data to byte arrays) and deserialize(byte arrays to complex data) data from/to SWCs.
+
+RTE transformers buffers can be configured to be in-place or out-place. In place buffer is used as input buffer and output buffer at the same time, reducing the use of memory but increasing the CPU load. In other hand, out-place buffers are two dedicated buffers: one input buffer and another output buffer; this consumes more memory but reduces the CPU load.
+
+**Transformer chains** are a sequential set of transformers that are grouped together. Each transformer performs a transformation over the data and pass that transformed data to the next transformer. The principal transformers are:
+
+1. COM based transformer (**COMXF**): Group signal transformer type that its transmissions are connected to COM BSW module. These group signals are transmitted by Sender/Receiver PDU interface type with a constant length and byte interpretation.
+2. Some/IP transformer (**SOME/IPXF**): Can be transmitted by S/R and C/S interfaces, this transformer performs serializations and deserializations to communicate with LDCOM (Large Data COM).
+3. E2E Transformer (**E2EXF**): use Client/Server communication, both queued or unqueued. It is only used between cyclic communication. E2EXF replaces E2EPW APIs.
+4. 
 ![12](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/b8106eee-48c1-498d-96d2-a351bc23f403)
 
 ![13](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/16cbd571-721d-445b-9ca6-8fef8dc8a05f)
 
+## SafeRTE
+
+RTE is the module that communicates SWCs with BSW. **Safe RTE** is an extended RTE that ensures the detection and prevention of communication failures between SWCs and BSW. Safe RTE has mechanisms to allow different ASIL SWCs communication, these mechanisms can produce OS application context changes to communicate ASIL SWCs with QM BSW and vice versa.
+
+Safe RTE mechanisms can fetch data indirectly from the RTE, these mechanisms ensure FFI between two different ASIl level components. C/S proxy mechanism can be used to generate containers of output parameters and input parameters to indirectly access values, and in this way ensuring FFI.
+
+### Tool Confidence Level
+
+RTE is not generated statically, then the **RTE generator tool** has the responsibility to ensure Safety on RTE. The nomenclature to determine the truthfulness of RTE generator tools is the Tool Confidence Level (**TCL**).
+
+TCL is derived from Tool Impact Level (**TI**) and Tool Error Detection level (**TD**). TI is the possibility that the tool introduces errors to the generation of RTE. TD is the truthfulness of the tool to detect errors. TCL level is calculated based on TI and TD, this level determines how much effort shall the tool/user perform to ensure RTE safe state. Using Safe RTE, the TCL level is minimized. To reach the highest level of truthfulness (TCL1), the user shall perform assessments inside and outside the RTE generation tool. Some of these assessments are:
+1. Additional self check and validation.
+2. Intensified Tests
+3. Solution assessments and reviews
+4. Extensive analysis of RTE generation scenarios.
+   
 ![14](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/2b970f4a-e573-4e27-abf2-2bdfe537537b)
 
 
