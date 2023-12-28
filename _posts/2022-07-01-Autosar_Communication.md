@@ -48,7 +48,7 @@ The following image shows the communication service modules, <Bus> modules depen
 ## SOME / IP Transformer
 Some/IP transformer (SOME / IPXF) is part of a chain of transformations that is run by RTE. When an SWC initiates inter-RTE communication, the SWC delivers the data to the RTE, RTE then passes this data to the transformation chain to transfer this data to the communication service cluster. SOME / IP serializes data when it comes from SWCs and deserializes when data goes to SWCs. During this serialization/deserialization, SOME / IP can throw and alert about transformation errors to COM.
 
-##COM-based Transformer
+## COM-based Transformer
 COM-based transformer (COMXF) is based on the COM settings of how the data will be handled. If the configuration demands it, the COM-based transformer can be deactivated or activated. The COM-based transformer converts data from SWCs in uint8 arrangements to forward to COM. Conversely, a COM-based transformer converts the array from uint8 to its original data structure.
 
 ## E2E Transformer
