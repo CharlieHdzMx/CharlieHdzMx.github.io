@@ -22,16 +22,18 @@ Functional Safety is based on systematic failures. Systematic failures are predi
 
 From the system perspective, there are two types of failure reaction:
 
-    1. Operational failure allows failures to stay on the ECU system with the objective of maintaining the system operating. Some rate of degradation might stay and can gradually increase on the system. This type of failure reaction is not usually used in the automotive industry.
+1. **Operational failure** allows failures to stay on the ECU system with the objective of maintaining the system operating. Some rate of degradation might stay and can gradually increase on the system. This type of failure reaction is not usually used in the automotive industry.
 
-    2. Safe Fail forces the system to enter a failure correction state to avoid any danger to the system and user. This type of failure reaction is usually used in the automotive industry.
-ISO 26262
+2. **Safe Fail** forces the system to enter a failure correction state to avoid any danger to the system and user. This type of failure reaction is usually used in the automotive industry.
+## ISO 26262
 
 ISO 26262 is the functional safety specification used in the automotive industry. This spec indicates the functional safety development that has to be considered during the product life cycle, this product shall contain safety requirements and safety goals based on the danger analysis and assessment from HW and SW disciplines.
 
 ISO 26262 indicates "guidelines" from different parts of the functional safety product development model as the following figure shows:
 
 ![01](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/3f48d694-51e9-414c-a3c0-25a2d70f593a)
+
+
 
 ![02](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/8475f106-9fb5-40ab-af67-0dc51af4e94b)
 
