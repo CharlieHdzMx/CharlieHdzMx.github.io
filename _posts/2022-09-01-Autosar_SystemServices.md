@@ -75,26 +75,27 @@ Code execution failures (or timing failures) can vary as follows:
 2. Code executed without request.
 3. Code that execution is too long.
 4. The code flow does not match what was expected.
-5. 
+
 The ways that Watchdog deals with these failures:
-Deadline Monitoring, applied in aperiodic execution, compares the time between 2
-checkpoints delimiting maximums and minimums.
-Alive Monitoring, applied in periodic executions, checkpoints are monitored in a
-specific time interval.
-Logic Monitoring, applied in incorrect execution flows, validates the sequence of
-checkpoints against a predefined sequence.
-The watchdog manager (WdgM) can detect timing failures in both application and BSW.
-When detecting a timing failure of a supervised SW entity, the WdgM will command the
-reset the ECU with optative actions. Reporting of inconsistencies in checkpoints from a
-Mixed ASIL ECU can be inherited between SWCs of different ASIL level, this is done so as
-not to have to change the OS context.
-WdgM monitors the supervised entities, when a supervised entity has any execution timing
-problem, WdgM returns a value of NOK and causes an ECU reset, usually.
-A Supervised Entity (SE), is an abstract SW entity that is monitored by WdgM. A SE
-contains 4 states that allow WdgM to know if it has a timing execution failure. The main
-states that an SE can have are Ok, Deactivated, Expired, and Failed. The difference between
-expired and failed is that “failed” can return to “ok” using debounce strategies while being
-expired, it is no longer possible to recover.
-A checkpoint (CP) is an SW target within the logic flow of an SE. Checkpoints notify WdgM
+1. **Deadline Monitoring**, applied in aperiodic execution, compares the time between 2 checkpoints delimiting maximums and minimums.
+2. **Alive Monitoring**, applied in periodic executions, checkpoints are monitored in a specific time interval.
+3. **Logic Monitoring**, applied in incorrect execution flows, validates the sequence of checkpoints against a predefined sequence.
+   
+The watchdog manager (**WdgM**) can detect timing failures in both application and BSW. When detecting a timing failure of a supervised SW entity, the WdgM will command the reset the ECU with optative actions. Reporting of inconsistencies in checkpoints from a Mixed ASIL ECU can be inherited between SWCs of different ASIL level, this is done so as not to have to change the OS context.
+
+WdgM monitors the supervised entities, when a supervised entity has any execution timing problem, WdgM returns a value of NOK and causes an ECU reset, usually. A Supervised Entity (SE), is an abstract SW entity that is monitored by WdgM. A SE contains 4 states that allow WdgM to know if it has a timing execution failure. The main states that an SE can have are Ok, Deactivated, Expired, and Failed. The difference between expired and failed is that “failed” can return to “ok” using debounce strategies while being expired, it is no longer possible to recover.
+
+A **checkpoint** (CP) is an SW target within the logic flow of an SE. Checkpoints notify WdgM when SE logic reaches a key point. Checkpoints can be called directly with a method _CheckpointReached_() or indirectly by RTE. CPs are part of a single SE, this means that a CP cannot be used in different SEs. In an SE, there must be at least one Global Initial CP and optionally several Global End CPs.
+
+**Transitions** are references flow between Checkpoints, transitions can be global (transitions between SEs checkpoints) and transitions can be local (transitions within a checkpoint). Communication Manager
+Communication Manager (ComM) controls the BSW modules related to communications by collecting and coordinating communication access requests from buses. ComM simplifies request processing at a high level by coordinating communication requests based on the availability of the communication stack and the hosting of communication resources.
+
+## Basic SW Mode Manager
+Basic SW Mode Manager (**BswM**) is the main responsible for managing BSW modes. When an SWC requests a BswM mode change, BswM handles that request even when it references to some other ECU. When BswM had finished performing “actions” triggered by this request, it returns a result via RTE to all involucrated SWCs to notify that they can be changed to the way they wanted.
+
+# Multicore System Services
+Inter-OS Application communication (**IOC**) provides communication of services that can be accessed between cores in the same ECU. That is communication through OS-Applications boundaries and memory partitions. When BSW is separated into different cores, the core through IOC and the ECU state manager will be responsible for executing services in runtime. that supports communication with IOC, even when it is possible for Complex Drivers to access it through extra configuration.
+
+IOC provides only Sender / Receiver communication with support for atomic non-queued communication (1: 1), N: 1 and N: M. Communication between OS applications in multicore is done by RTE. RTE is the only one
 ![03](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/50742609-dc2d-4a2e-8be8-8a425ad85851)
 
