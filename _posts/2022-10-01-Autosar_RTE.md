@@ -66,6 +66,32 @@ For example, one mode change cycle can be as follow:
 
 ![02](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/01a60f9b-4773-4196-88d1-d0051053fdc0)
 
+# Error handling, diagnosis, and report
+There are three types of SW errors reporting:
+1. Development Errors report: Errors that can be found during development phases, these reports can be deactivated when the product is during the production phase.
+2. Runtime Errors report: Indicate severe and systematic SW errors.
+3. Production Error report: are normally required to save loggings to later be used as information when the ECU system is repaired on an automotive dealer “garage”.
+
+The different ways to report the previously mentioned errors are:
+1. APIs. Informing the function that is calling the operational failure.
+2. Callback. Defined statically and informing the caller about the operational failure.
+3. Central Error Hooks. To log and track development errors.
+4. DET Central callouts. To manage errors during the product lifetime.
+5. DEM central error function. Used principally to error reactions and production code logging.
+
+**Diagnostic Event Manager** (DEM) serves every SWC error reporting during development, production, and after-production cycles. These errors react specifically by the configuration definition, for example, they react by writing the errors in memory, deactivate functions from the ECU, or notifying several SWCs to let them act against the error.
+
+**Default Error Tracer** (DET) severs to report errors of development cycles of all the levels of SW. The DET error reactions can be the error counting, writing the errors into RAM, logging the error externally, or defining breakpoints.
+
+**Diagnostic Log and Trace** (DLT) collects all the log messages either when these messages are errors, warnings, or info messages coming from SWCs. These messages are converted into standardized formats, to later be forward the data to PDUR in order to send the data to their specific vehicle network communication protocol. Thereby, DLT logs communication messages to the SWCs too, tracking the RTE relevant activities, controlling the logs based on their pre-configured priority, and generate mechanisms of security that prevent misuse of these logs during production cycles.
+
+**E2E** protection communication ensures the secure data exchange in run-time to detect and
+handle systematic failures of lower layers than ASW. E2E prevents that these failures affect ASW. The way that E2E protect the communication is based on the different configurable and adaptive profiles used by the SWC such as:
+
+1. Data Control addition to Functional Safety data that is leaving the SWC.
+2. Verify data that is intended to enter to the Functional Safety SWCs by data control checking.
+3. Throwing or allowing data that passed the data control verification, and returning the result to the appropriated SWCs.
+   
 ![03](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/a2ccfd56-dfe3-4663-a3d3-f8ff4dd724d6)
 
 ![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/2e21f89c-7fc7-4f13-9e9a-99c1304f7e7a)
