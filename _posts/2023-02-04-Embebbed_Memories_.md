@@ -15,16 +15,16 @@ For those learning Embedded Systems, a crucial aspect is understanding the disti
 
 The common memory types in embedded systems are:
 1. RAM (Random Access Memory)
-  1. DRAM
-  2. SRAM
+  DRAM
+  SRAM
 2. ROM (Read Only Memory)
-  1. ROM
-  2. PROM
-  3. EPROM
+  ROM
+  PROM
+  EPROM
 3. Hybrid
-  1. NVRAM (KAM)
-  2. Flash
-  3. EEPROM
+   NVRAM (KAM)
+   Flash
+   EEPROM
 
 # RAM memories
 RAM memories permits the reading and writing of data in specific memory location, but they cannot retain the data after a power removing. This memory family characteristic is that they are volatile writable memories and their process is byte per byte with unlimited cycles.
