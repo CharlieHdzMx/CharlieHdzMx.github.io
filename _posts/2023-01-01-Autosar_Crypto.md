@@ -35,45 +35,58 @@ In general, symmetric cryptography can create messages of authentication of code
 Asymmetric cryptography uses two keys (one public and another private). These keys have relatively large lengths. The public key can be shared with all the entities that can collaborate with the system; whereas the private key cannot be shared with all the entities of the system and shall be dedicated to a specific entity.
 
 Asymmetric cryptography algorithms are based on one key encrypting the data and the other one decrypts the data. For example, if the public key is used to encrypt data, then the private key is used to decrypt the data. The most used algorithms of asymmetric cryptography are RSA(Rivest, Shamir, and Adleman) and ECC (Elliptic Curve Cryptography).
-Digital Signature.
 
+### Digital Signature.
 The digital signature is based on asymmetric cryptography and offers data authenticity and data integrity. The digital signature creator generates the signature by the hash generation of complex data, to later encrypt this data before transmitting it to the user. The user decrypts the received data using a private key; after that compare the hash data with the decrypted hash data and if they are the same, then the data integrity and data authenticity are guaranteed.
 
 Digital signatures are used by certifications. Certifications are mechanisms to ensure that one data-sending entity is allowed to send those data. Certifications usually contain personal data from the sender (for example IDs, sensitive information), this personal data has an expiration time to use. One use case from the automotive industry is the tester identification with certifications to allow access to the ECU. This ECU access is supported by different certifications for each access level (Root, Tester, Checker, …).
 
 # Detailed Crypto Stack
 The EE architecture with a cybersecurity mechanism can involve multiple layers of security from the ECU perspective.
-The first layer is the vehicle access point layer that can be secured by adding firewalls and intrusion detection.
-The second layer is the in-vehicle network interfaces that can be secured by adding firewalls, key managers, filtering routing, or delimitating interface zones.
-The third layer is the public inner-vehicle network that can be secured principally by message authentication protections.
-The fourth layer is the private inner-vehicle network that can be secured principally by message authentication protections.
-The fifth layer is the ECU by itself that can be secured principally by anti-tampering security mechanisms.
+1. The first layer is the vehicle access point layer that can be secured by adding firewalls and intrusion detection.
+2. The second layer is the in-vehicle network interfaces that can be secured by adding firewalls, key managers, filtering routing, or delimitating interface zones.
+3. The third layer is the public inner-vehicle network that can be secured principally by message authentication protections.
+4. The fourth layer is the private inner-vehicle network that can be secured principally by message authentication protections.
+5. The fifth layer is the ECU by itself that can be secured principally by anti-tampering security mechanisms.
+
+![01](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/1a02a9be-d693-4e63-8dca-4655b66f32c4)
  
 Systems (more usual to legacy systems) encounter major blocks while trying to integrate cybersecurity features. These major blocks can be the need to change the architecture of the system and still sometimes the microcontroller chip, additionally, there might be a new requirement to support MACs or message security wrappers that require higher bandwidth. Some approaches that permit overcoming these blocking areas and support cyber-security are the decouplings of the network communication, use standardized concepts, or change the vehicle communication protocol. For example, moving a legacy bus payload of CAN (8 bytes) to a higher bandwidth network such as CAN-FD (64 bytes) into a dedicated bus allows the insolation of sensible information, and the high bandwidth does not affect other legacy networks.
-Autosar Crypto Stack
+
+## Autosar Crypto Stack
+
 The crypto stack allows synchronous job processing or asynchronous job processing depending on the use case: 
-Synchronous jobs are used when the services are required to be calculated fast and the overhead from the callback use is not acceptable; for example fast generation of MACs on the SecOC (Secure Onboard Communication) module. 
-Asynchronous jobs are used when the service lasts a long time and the synchronous calls would affect the other task calls; for example, the signature verification requires relatively large execution times.
+1. Synchronous jobs are used when the services are required to be calculated fast and the overhead from the callback use is not acceptable; for example fast generation of MACs on the SecOC (Secure Onboard Communication) module.
+2. Asynchronous jobs are used when the service lasts a long time and the synchronous calls would affect the other task calls; for example, the signature verification requires relatively large execution times.
+   
 The cryptographic jobs shall permit the static configuration of keys. Regardless of the type of crypto algorithm, every key is referenced by a unique ID, this ID permits the addressing of keys to users without giving a direct interface to extract the encrypted data.
+
 The crypto stack shall identify all the crypto functions as an abstract request to the crypto drivers. This means that the crypto stack would identify the random generation number, encryption/decryption functions, MAC generation, signature functions, and hash calculation as an abstract crypto primitive that can be requested by homogenous interfaces on the specific crypto drivers. Moreover, the crypto management that is part of the crypto stack shall be able to support abstraction of interface for specific key functions such as the derivation of symmetric keys, key exchanging, key wrapping, or key extraction.
+
 Crypto stack can support interfaces for additional functions such as the parsing of certification, detection of invalid keys, and secure counter interfacing. Crypto manager might request the read and increment of the counter from the crypto drivers using services interfaces to avoid the direct access of the users to these counters type. The crypto manager parses the incoming certifications to extract the keys, and can also detect the invalid keys to cover corner cases of some crypto algorithms (mainly RSA and ECC) that cannot support this verification and rejection of keys; this detection is commanded to be performed on the crypto driver itself.
+
 The Autosar cryptography stack is composed of the following modules:
-Crypto Service Manager (CSM): This module communicates with the SWCs to offer services and handlers to the cryptography operations:
-Random number and hashing generation.
-Data encryption/decrypt.
-MACs.
-Digital Signature.
-Models of operations based on “jobs”.
-Asynchronous/Synchronous process of jobs.
-Generation, derivation, and exchange of keys.
-Freshness counting
-Crypto Interface (CRYIF): This module enables CSM to access Crypto Driver features based on standardized APIs.
-Crypto Driver (CryptoSW and CryptoHw): These modules are the ones performing the cryptographic functions. CryptoSW uses SW libraries whereas CryptoHW uses HW capabilities (SHE, HSM, TPM, …).
- 
-Crypto Service Manager
-Crypto Service Manager (CSM) is the service module from BSW that manages the crypto services to secure data and processes. A CSM Job is the abstraction of CSM keys, CSM queues, and CSM primitive types. CSM has the properties to be able to dispatch jobs based on priorities. The jobs can be synchronous or asynchronous, Synch jobs wait for the returning value of a finished call and do not use callbacks; whereas async jobs are inserted into the queue based on their priority when the respective callback is finished.
+1. **Crypto Service Manager** (CSM): This module communicates with the SWCs to offer services and handlers to the cryptography operations:
+  1. Random number and hashing generation.
+  2. Data encryption/decrypt.
+  3. MACs.
+  4. Digital Signature.
+  5. Models of operations based on “jobs”.
+  6. Asynchronous/Synchronous process of jobs.
+  7. Generation, derivation, and exchange of keys.
+  8. Freshness counting
+2. **Crypto Interface** (CRYIF): This module enables CSM to access Crypto Driver features based on standardized APIs.
+3. **Crypto Driver** (CryptoSW and CryptoHw): These modules are the ones performing the cryptographic functions. CryptoSW uses SW libraries whereas CryptoHW uses HW capabilities (SHE, HSM, TPM, …).
+
+![02](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/726b19a5-6096-4172-985b-c8c7af56a3d3)
+
+### Crypto Service Manager
+Crypto Service Manager (**CSM**) is the service module from BSW that manages the crypto services to secure data and processes. A **CSM Job** is the abstraction of CSM keys, CSM queues, and CSM primitive types. CSM has the properties to be able to dispatch jobs based on priorities. The jobs can be synchronous or asynchronous, Synch jobs wait for the returning value of a finished call and do not use callbacks; whereas async jobs are inserted into the queue based on their priority when the respective callback is finished.
+
 Based on the exchange of information on the security stack, each CSM key is mapped to a CRYIF key and a Crypto Driver key.
+
 CSM Queues are mapped based on the Crypto Driver, CRYIF uses one channel for each CSM Queue to a Crypto Driver in order to process one job at a time.
+
 The crypto stack communication is as follows:
 One SWC asks for a CSM service using the API Csm_Encrypt(). This API use Job IDs to identify every encryption process.
 CSM adds the required job to one of the available CSM queues, the scheduler processes this job based on its priority.
