@@ -88,39 +88,48 @@ Based on the exchange of information on the security stack, each CSM key is mapp
 CSM Queues are mapped based on the Crypto Driver, CRYIF uses one channel for each CSM Queue to a Crypto Driver in order to process one job at a time.
 
 The crypto stack communication is as follows:
-One SWC asks for a CSM service using the API Csm_Encrypt(). This API use Job IDs to identify every encryption process.
-CSM adds the required job to one of the available CSM queues, the scheduler processes this job based on its priority.
-Then CSM executes Csm_MainFunction() to transmit the selected job to lower modules.
-The job is transmitted to the Crypto Driver, which processes it, and returns a specific value to let CSM know the result.
-CSM returns the result to the SWC while removing the processed job from the queue.
+1. One SWC asks for a CSM service using the API Csm_Encrypt(). This API use Job IDs to identify every encryption process.
+2. CSM adds the required job to one of the available CSM queues, the scheduler processes this job based on its priority.
+3. Then CSM executes Csm_MainFunction() to transmit the selected job to lower modules.
+4. The job is transmitted to the Crypto Driver, which processes it, and returns a specific value to let CSM know the result.
+5. CSM returns the result to the SWC while removing the processed job from the queue.
+
 CSM primitives define each job type based on:
-Crypto predefined generic algorithms.
-MAC generation or verification.
-A digital signature generation or verification.
-Encryption/Decryption of symmetric keys.
-Encryption/Decryption of asymmetric keys.
-Hashing, random number generation, etc.
-Specific algorithm configuration
-Algorithm family (AES, RDS, …)
-Algorithm mode.
-Job processing mode.
-Length of input/output data.
-Security on On-board Communication
+1. Crypto predefined generic algorithms.
+2. MAC generation or verification.
+3. A digital signature generation or verification.
+4. Encryption/Decryption of symmetric keys.
+5. Encryption/Decryption of asymmetric keys.
+6. Hashing, random number generation, etc.
+7. Specific algorithm configuration
+8. Algorithm family (AES, RDS, …)
+9. Algorithm mode.
+10. Job processing mode.
+11. Length of input/output data.
+
+### Security on On-board Communication
 Security on On-board Communication (SecOC) is an additional module at the  Autosar communication stack related to PDU transmission authentication and integrity. SecOC retrieves PDUs from PDUR and adds security information to encrypt based on the PDU payload and the SOME/IP transformer use. SecOC supports various communication buses such as CAN, FlexRay, and Ethernet but is not supporting LIN yet. 
- 
+
+![03](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/804e552e-506a-4955-a2e5-0d5164bc2537)
+
 The principal interaction flow of SecOC is:
-PDUR receives one PDU from one specific channel (CAN, FlexRay, Ethernet).
-PDUR transmits the PDU to SecOC, then SecOC converts this PDU to a “secure” PDU.
-SecOC along with CSM verifies the PDU authenticity and integrity.
-SecOC returns the PDU without security wrappers to PDUR to finish the PDU processing. 
-When SecOC determines that one PDU is insecure, SecOC discards the PDU, and PDUR receives nothing from SecOC.
-SecOC communicates the PDU verification results to ASW.
-Additionally, SecOC can support PDU data freshness.
- 
-Crypto Interface
+1. PDUR receives one PDU from one specific channel (CAN, FlexRay, Ethernet).
+2. PDUR transmits the PDU to SecOC, then SecOC converts this PDU to a “secure” PDU.
+3. SecOC along with CSM verifies the PDU authenticity and integrity.
+4. SecOC returns the PDU without security wrappers to PDUR to finish the PDU processing.
+5. When SecOC determines that one PDU is insecure, SecOC discards the PDU, and PDUR receives nothing from SecOC.
+6. SecOC communicates the PDU verification results to ASW.
+7. Additionally, SecOC can support PDU data freshness.
+   
+![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/7e92b58c-1f0c-4a13-ac0e-6039abaa8982)
+
+## Crypto Interface
 Crypto Interface (CryIf), located in the ECU abstraction layer, is the implementation of cryptography abstraction made by the crypto drivers and coordinated by CSM access. CryIf offers independent APIs from HW/SW crypto drivers to superior modules to process the crypto operations. 
-Crypto Driver
+
+## Crypto Driver
 Crypto Drivers, located in the microcontroller abstraction layer, are the principal responsibilities of the crypto operations. They specify the crypto capabilities (key storage and algorithm support) and the composition of the key. Each Crypto Driver is represented by a crypto driver object, each crypto driver object depends on a vendor-defined initialization. 
+
 The key component is the classification of key types made by the Crypto Drivers. Examples of these key types are Private key, Public key, hash values, random number certification, etc. Autosar defines these key types to perform crypto operations. Each composition key type has one ID, Autosar defines a key type ID below 1000, when two different key types have the same ID, then these key types can be used such the same type (Length, operations, access, etc). Keys ID that is above 1000 is free-definition to e used by the vendor.
+
 Crypto driver can only dispatch one CSM job at the type, the pre-configuration determines the capabilities of each crypto driver object to support the kind of jobs that CSM shall acknowledge. Crypto driver support state of IDLE, START and FINISH to denote its state to upper layer modules and therefore avoid misled job processing (for example, CSM sending jobs when the Crypto Driver is not ready yet). Every synchronous or asynchronous job processing is called by CryIf when the job had been finished by the Crypto Driver.
 
