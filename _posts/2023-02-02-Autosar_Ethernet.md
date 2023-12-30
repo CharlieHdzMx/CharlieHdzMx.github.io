@@ -9,21 +9,28 @@ tags:
 comments: true
 category: blog
 ---
-One of the principal reasons that automobiles are embracing ethernet communication is due to the tendency that distributed open systems are becoming more frequent inside the vehicles. Distributed systems mean the distribution of vehicle functionalities into different ECUs (being more and smaller as time passed), these distributed systems are demanded principally to high-speed networks, for RTOS systems, and special safety requirements. Open systems are systems that actively interact with external systems (Infotairment interfaces or electric vehicle charge stations); an open system requires additional measurements of communication and behavior security. Additionally, Ethernet integration adds advantages to the systems such as big SW packages download for updating purposes, big data transferences, and flexible data communication.
+One of the principal reasons that automobiles are embracing ethernet communication is due to the tendency that **distributed open systems** are becoming more frequent inside the vehicles. Distributed systems mean the distribution of vehicle functionalities into different ECUs (being more and smaller as time passed), these distributed systems are demanded principally to high-speed networks, for RTOS systems, and special safety requirements. Open systems are systems that actively interact with external systems (Infotairment interfaces or electric vehicle charge stations); an open system requires additional measurements of communication and behavior security. Additionally, Ethernet integration adds advantages to the systems such as big SW packages download for updating purposes, big data transferences, and flexible data communication.
+
 Ethernet is used for sophisticated architectures where other vehicle communication networks are unable to meet the requirements (CAN, LIN, FD, etc); this is due Ethernet is cheaper, faster, and more secured that these vehicle communication networks.
+
 Ethernet integrates a gateway to have a dedicated link of nodes. Ethernet cannot have data collisions due to the switching of communication of the nodes only permits the communication between the sender and the receiver.
+
 Ethernet is based on the vehicle usage of the OSI model (differing only in the application layer and being the same at the physical and network-level). Ethernet was introduced in Autosar 4.0 with increasing support as newer versions continue to be released.
+
 The scalibility classes of the Autosar 4.2.1 protocol refering to Ethernet are:
-IPv4: ARP, ICMPv4, and DHCPv4.
-IPv6: NDP, ICMPv6, and DHCPv6
-Dual-stack: containing both IPv4 and IPv6.
-Ethernet Basics
-Physical Layer
-To be able to communicate through Ethernet, the microcontroller requires an Ethernet MAC. This communication with MACs is performed by a PHY transceiver (physical layer) through the MII interface (Medium-independent interface). MII is specialized in the connection of different physical layers with different MACs, to transmit from a PHY to the physical medium of another ECU, the MDI interface(Medium-Dependent Interface) is used.
+1. IPv4: ARP, ICMPv4, and DHCPv4.
+2. IPv6: NDP, ICMPv6, and DHCPv6
+3. Dual-stack: containing both IPv4 and IPv6.
+
+# Ethernet Basics
+## Physical Layer
+To be able to communicate through Ethernet, the microcontroller requires an **Ethernet MAC**. This communication with MACs is performed by a **PHY transceiver** (physical layer) through the MII interface (Medium-independent interface). MII is specialized in the connection of different physical layers with different MACs, to transmit from a PHY to the physical medium of another ECU, the MDI interface(Medium-Dependent Interface) is used.
 <Fig 1>
-Data Link Layer
-The data link layer defines the basic functionality of communication: Bus access, frame formatting, and how the node direction is done. The node direction can be unicast (1:1), multicast (1:m<n), or broadcast (1:n); where m is a preselected subset of nodes in the network, and n is the total of nodes available in the network. The data link layer is subdivided into 2 sub-control layers, the Logic Link Control (LCC) and the Medium Access Control (MAC). LCC controls the different connections with the use of high layers abstraction, whereas MAC provides direct access to the physical layer (within access to the bus, frame formatting, and node addressing).
-Inside an Ethernet network, each ECU shall have a unique MAC address and a PHY transceiver for its own use. For example, when ECU-A is trying to communicate with ECU-B, the first step is that ECU-A identifies itself by its MAC address, and after the identification is done, ECU-A would send an ETH frame (data) to ECU-B .
+
+## Data Link Layer
+The **data link layer** defines the basic functionality of communication: Bus access, frame formatting, and how the node direction is done. The node direction can be unicast (1:1), multicast (1:m<n), or broadcast (1:n); where m is a preselected subset of nodes in the network, and n is the total of nodes available in the network. The data link layer is subdivided into 2 sub-control layers, the Logic Link Control (LCC) and the **Medium Access Control** (MAC). LCC controls the different connections with the use of high layers abstraction, whereas MAC provides direct access to the physical layer (within access to the bus, frame formatting, and node addressing).
+
+Inside an Ethernet network, each ECU shall have a unique MAC address and a PHY transceiver for its own use. For example, when ECU-A is trying to communicate with ECU-B, the first step is that ECU-A identifies itself by its MAC address, and after the identification is done, ECU-A would send an ETH frame (data) to ECU-B.
 As a general overview, the ETH frame contains:
 The preamble to synchronize the network timers.
 Destiny address.
