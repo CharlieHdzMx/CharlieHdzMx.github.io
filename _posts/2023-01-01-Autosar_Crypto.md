@@ -108,7 +108,7 @@ CSM primitives define each job type based on:
 11. Length of input/output data.
 
 ### Security on On-board Communication
-Security on On-board Communication (SecOC) is an additional module at the  Autosar communication stack related to PDU transmission authentication and integrity. SecOC retrieves PDUs from PDUR and adds security information to encrypt based on the PDU payload and the SOME/IP transformer use. SecOC supports various communication buses such as CAN, FlexRay, and Ethernet but is not supporting LIN yet. 
+Security on On-board Communication (**SecOC**) is an additional module at the  Autosar communication stack related to PDU transmission authentication and integrity. SecOC retrieves PDUs from PDUR and adds security information to encrypt based on the PDU payload and the SOME/IP transformer use. SecOC supports various communication buses such as CAN, FlexRay, and Ethernet but is not supporting LIN yet. 
 
 ![03](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/804e552e-506a-4955-a2e5-0d5164bc2537)
 
@@ -124,7 +124,7 @@ The principal interaction flow of SecOC is:
 ![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/7e92b58c-1f0c-4a13-ac0e-6039abaa8982)
 
 ## Crypto Interface
-Crypto Interface (CryIf), located in the ECU abstraction layer, is the implementation of cryptography abstraction made by the crypto drivers and coordinated by CSM access. CryIf offers independent APIs from HW/SW crypto drivers to superior modules to process the crypto operations. 
+Crypto Interface (**CryIf**), located in the ECU abstraction layer, is the implementation of cryptography abstraction made by the crypto drivers and coordinated by CSM access. CryIf offers independent APIs from HW/SW crypto drivers to superior modules to process the crypto operations. 
 
 ## Crypto Driver
 Crypto Drivers, located in the microcontroller abstraction layer, are the principal responsibilities of the crypto operations. They specify the crypto capabilities (key storage and algorithm support) and the composition of the key. Each Crypto Driver is represented by a crypto driver object, each crypto driver object depends on a vendor-defined initialization. 
