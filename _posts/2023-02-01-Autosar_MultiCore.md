@@ -186,31 +186,40 @@ The concept of context self-awareness is the way that CDDs know in which context
 
 ## Multicore development recommendations
 The data exchange at the boundaries of cores can be handled by the use of **proxies** and **satellites**. The main difference between satellites and proxies is that satellites permit better distribution of workload between cores and proxies to translate the C/S communication to a more efficient S/R communication.
+
 Regarding SWC logic at any core boundary, is recommended to use enqueued communication because the queued communication uses spin-locks. In this context, it is also recommended to access ports with buffers instead of ports without buffers to avoid frequent access inside runnables and make data stabler during execution.
+
 Regarding data type in atomic access, it is recommended to use simple data types instead of complex data types because simple data types have a better consistency and avoid the need for additional security measurements when they are used within a signal group. If complex data must be used, then it is recommended to combine them inside big structures to minimize the use of spinlocks.
+
 Regarding SWC and BSW mapping, it is recommended to pass SWCs with higher internal algorithm processing to a core without BSW; otherwise, when an SWC has frequent interaction with BSW is better to let that SWC logic within the same core than BSW. The SWCs that depend on each other sequentially are recommended to be mapped in the same core, nevertheless, it is possible to separate the core of an Input-Process-Output sequence model where SWCs have dedicated functionality as Input handler, Processor, or Output handler. 
 <img 8>
+
 Regarding runnables, it is recommended to group Runnables inside an atomic SWC that is located only in one core, this is because runnables cannot be mapped in different cores. This is also preferable in Input-Process-Output model patterns because this minimizes the synchronization time.
-Parallelism Design Patterns
+
+### Parallelism Design Patterns
 The following points are some examples of implementation of parallelism:
-Pipes. They use received data triggers among cores to perform pipelining to reduce the spinning timing. Among cores, there might be feedbacks to the previous processings and parallelism execution. <img9>
-Global times. Every SWC holds a timestamp that can be started by external triggers (ET) or internal triggers (IT). The possible worst-case time from the trigger execution to the end of the timestamp is used to calculate the worst-case execution time(WCET). <img10>
-Fork and Join. This implementation is based on synchronous or asynchronous calls of Operation Invoked Trigger (OIT). In synchronous calls, the execution is frost when other cores are being executed to balance the workload. In asynchronous calls, parallel activities are possible to reduce the spinning time. <img12>
-Single core to Multicore migration
+1. **Pipes**. They use received data triggers among cores to perform pipelining to reduce the spinning timing. Among cores, there might be feedbacks to the previous processings and parallelism execution. <img9>
+2. **Global times**. Every SWC holds a timestamp that can be started by external triggers (ET) or internal triggers (IT). The possible worst-case time from the trigger execution to the end of the timestamp is used to calculate the worst-case execution time(WCET). <img10>
+3. **Fork and Join**. This implementation is based on synchronous or asynchronous calls of Operation Invoked Trigger (OIT). In synchronous calls, the execution is frost when other cores are being executed to balance the workload. In asynchronous calls, parallel activities are possible to reduce the spinning time. <img12>
+
+## Single core to Multicore migration
 There are two possible cases to migrate to multicore:
-Single-core to Multicore
-Few cores to Multicore.
-Migrate from a single core
+1. Single-core to Multicore
+2. Few cores to Multicore.
+
+### Migrate from a single core
 When migrating from one core to multicore, the architecture shall be enclosed to be pure multicore and RTE would handle the multicore abstraction and task mapping to be associated with the different new cores. Moreover, all shared resources shall be extended to cover multicore concurrency.
+
 Some risk when migrating from a single core can be:
-Data inconsistency. The consistency of data that worked on single-core systems might not work in multicore systems. These inconsistencies can be hard to detect, for example, interruptions of locks, task priorities, non-preemptive tasks might differ after the migrations.
-Among cores sequential calls deficit. If single core SWC shared a sequential dependency of calls, when they are moved to a multi-core system, the sequential execution might fail because every core would contain their own independent scheduling from other cores and then the sequential calls might increase the overhead and waiting time between core context changes.
-Every related task and SWC runnable frame shall be mapped to the same core when the SWCs are partitioned to join different cores due that runnables are core-dependent.
-Migrate from few single cores
+1. **Data inconsistency**. The consistency of data that worked on single-core systems might not work in multicore systems. These inconsistencies can be hard to detect, for example, interruptions of locks, task priorities, non-preemptive tasks might differ after the migrations.
+2. **Among cores sequential calls deficit**. If single core SWC shared a sequential dependency of calls, when they are moved to a multi-core system, the sequential execution might fail because every core would contain their own independent scheduling from other cores and then the sequential calls might increase the overhead and waiting time between core context changes.
+
+Every related task and **SWC runnable frame shall be mapped to the same core** when the SWCs are partitioned to join different cores due that runnables are core-dependent.
+
+### Migrate from few single cores
 Usually, the multicore architecture bandwidth is higher than the multiprocessor's interconnected architectures. The deletion of these interconnections allows better performance of the system due that vehicle network protocols (SPI, UART, CAN, LIN, Ethernet) require more computation to transmit data in multiprocessors system than multicore systems.
+
 Some risk when migrating from a few core can be:
-Resources reduction. For example, the memory would be shared. Even when multicore memories are designed to be higher to support multicore architectures, usually these memories can be less than the processors that were migrated.
-Performance can be affected by shared resources arbitration.
-Some resources drivers are not designed to be used on concurrency.
-The periodic force of core power switching. In ECU interconnections, sometimes an ECU can be turned off (Low power mode), reboot, or turn on independently from other ECUs, but in multicore, there are few drivers that can support periodic power switching of cores.
+1. Resources reduction. For example, the memory would be shared. Even when multicore memories are designed to be higher to support multicore architectures, usually these memories can be less than the processors that were migrated. Performance can be affected by shared resources arbitration. Some resources drivers are not designed to be used on concurrency.
+2. The periodic force of core power switching. In ECU interconnections, sometimes an ECU can be turned off (Low power mode), reboot, or turn on independently from other ECUs, but in multicore, there are few drivers that can support periodic power switching of cores.
 
