@@ -9,7 +9,7 @@ tags:
 comments: true
 category: blog
 ---
-Multicore Fundamentals
+# Multicore Fundamentals
 Multicore is the concept that indicates that a microcontroller contains mechanisms to run activities in parallel based on the number of cores that it contain. The principal reasons to use multicores microcontrollers instead of a single-core microcontroller are:
 Do more in less time. If there is the need to perform an appropriate task in the less possible time, a multicore microcontroller can split the task into different cores to be able to fasten the procedure.
 Distribute functions among cores. When a set of functions are independent between each other and have a joint at the end of the process, it is possible to distribute these functions between cores. <MC1 image>
