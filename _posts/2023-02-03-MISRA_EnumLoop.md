@@ -13,11 +13,11 @@ This article discusses the utilization of enum types as loop indexes, highlighti
 
 Consider a scenario where a system comprises several power supplies. During the system initialization process, it becomes essential to inspect the states of all power supplies. Opting for an enum type proves superior to macros for iteration purposes. Therefore, a power supply enum type is created to facilitate this process.
 
-`
+```
+
   /*Available power supplies.*/
   typedef struct
   {
     PS_NORMAL = 0u,
     PS_AUX_1,
-
-`
+```
