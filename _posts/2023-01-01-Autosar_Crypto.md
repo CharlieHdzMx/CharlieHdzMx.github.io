@@ -20,19 +20,28 @@ Cryptography is the mechanism/algorithm collection to perform cybersecurity on a
 Some other complementary cryptography mechanisms are:
 1. **Hashes** are interface functions that hide the real values of data sets.
 2. **Protocols** are complex mechanisms to use different types of cipher with hashes.
-There is a principle called Kerckhoffs Principle which indicates that the security of a system relies almost entirely on the secrecy of the key and not on the secrecy of the algorithm.
+
+There is a principle called **Kerckhoffs Principle** which indicates that the security of a system relies almost entirely on the secrecy of the key and not on the secrecy of the algorithm.
+
 A hash function takes one input value with variable length, then the hash maps the output with a predefined length to represent the fingerprint of data. A secure hash function is infeasible to the inverse computation of the output and it is infeasible to the case where two inputs cannot yield to the same mapped output. Hash functions perform huge changes to relative small input differences. Hash functions are not defined as cybersecurity mechanisms but are very important as a complement to some real security mechanisms.
-Symmetric cryptography
-Symmetric cryptography uses the same key to encrypt and decrypt. This type of encryption is normally used for data confidentiality, integrity, and authenticity. The distribution of keys shall be careful because anyone with the key can access all security mechanisms. 
+
+## Symmetric cryptography
+Symmetric cryptography uses the same key to encrypt and decrypt. This type of encryption is normally used for data confidentiality, integrity, and authenticity. The distribution of keys shall be careful because anyone with the key can access all security mechanisms.
+
 The most used in the automotive industry symmetric cryptography is the Advanced Encryption Standard (AES), AES is based on block cryptography algorithms and needs the definition of the key and the data length (128 bits, 192 bits, or 256 bits). AES performs cycles of encryption rounds, these rounds operate combinations of byte substitution, shifting of bytes, or key addition to produce a CipherText.
 In general, symmetric cryptography can create messages of authentication of code (MACs) during their procedure using the secret key. MAC is a fixed-side digital code that can be only created by the key creator. The MAC is transmitted along with the encrypted data, if the receiver can decipher the MAC, then it is assumed that the encrypted data can be decrypted too. There are two types of MACs, the one defined by hash functions (HMAC) or the one defined by block encryption (CMAC).
-Asymmetric cryptography
+
+## Asymmetric cryptography
 Asymmetric cryptography uses two keys (one public and another private). These keys have relatively large lengths. The public key can be shared with all the entities that can collaborate with the system; whereas the private key cannot be shared with all the entities of the system and shall be dedicated to a specific entity.
+
 Asymmetric cryptography algorithms are based on one key encrypting the data and the other one decrypts the data. For example, if the public key is used to encrypt data, then the private key is used to decrypt the data. The most used algorithms of asymmetric cryptography are RSA(Rivest, Shamir, and Adleman) and ECC (Elliptic Curve Cryptography).
-Digital Signature
+Digital Signature.
+
 The digital signature is based on asymmetric cryptography and offers data authenticity and data integrity. The digital signature creator generates the signature by the hash generation of complex data, to later encrypt this data before transmitting it to the user. The user decrypts the received data using a private key; after that compare the hash data with the decrypted hash data and if they are the same, then the data integrity and data authenticity are guaranteed.
+
 Digital signatures are used by certifications. Certifications are mechanisms to ensure that one data-sending entity is allowed to send those data. Certifications usually contain personal data from the sender (for example IDs, sensitive information), this personal data has an expiration time to use. One use case from the automotive industry is the tester identification with certifications to allow access to the ECU. This ECU access is supported by different certifications for each access level (Root, Tester, Checker, …).
-Detailed Crypto Stack
+
+# Detailed Crypto Stack
 The EE architecture with a cybersecurity mechanism can involve multiple layers of security from the ECU perspective.
 The first layer is the vehicle access point layer that can be secured by adding firewalls and intrusion detection.
 The second layer is the in-vehicle network interfaces that can be secured by adding firewalls, key managers, filtering routing, or delimitating interface zones.
