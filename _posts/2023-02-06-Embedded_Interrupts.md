@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Qt Image
-excerpt: Description of a application using Qt command classes
+title: Embedded Interrupts,Scheduler and Tasks
+excerpt: Embedded Interrupts,Scheduler and Tasks
 modified: 5/07/2021, 9:00:24
 tags:
-  - Qt
-  - Cpp
+  - C
+  - Embedded Systems
+  - Interrupts
 comments: true
 category: blog
 ---
-![[Pasted image 20231227111913.png]]
