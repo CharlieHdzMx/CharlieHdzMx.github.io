@@ -117,9 +117,22 @@ Certainly, the data of the task is saved in the stack (Registers + Program Count
 
 ![05](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/f6f3af21-691a-4439-83e8-af34ca71067f)
 
-If there is a high priority interrupt running, then all the low priority interrupt will wait to be
-dispatched.
+If there is a high priority interrupt running, then all the low priority interrupt will wait to be dispatched.
 
+# Interrupt Service Routine
+ISR, or Interrupt Service Routine, is represented by functions that acknowledge and handle the interruptions detected by the system. The typical use case of ISRs is as follows:
 
+1. The application/main function is running as a precondition.
+2. The interruption is acknowledged by the application and ISR.
+3. ISR is activated.
+4. The ISR initiates the saving of the processor context.
+5. Resources necessary to restore the application context are pushed into the stack.
+6. ISR detects the interruption trigger and processes the interruption appropriately.
+7. Once ISR finishes handling the interruption:
+   1. It pops the application resources from the stack.
+8. ISR returns control to the application.
+9. The application continues its logic.
+
+![06](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/4019a99d-cf96-4c65-8111-6e42daccbbbe)
 
 
