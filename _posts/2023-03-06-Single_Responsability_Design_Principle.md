@@ -40,3 +40,32 @@ In reality, changes from a specific actor can indeed impact various software com
 
 # SW Component level SRP
 SRP for a SW Component level dictates: “_An class should have only one reason to change_”.
+
+Within a software component, a class should strive to have a single responsibility to avoid several issues:
+1. **Heavy Dependencies:** Having a single responsibility avoids unnecessary dependencies on libraries that are only needed by one responsibility but not the others.
+2. **Interference between Responsibilities:** Keeping responsibilities separate ensures that changes demanded by one responsibility won't inadvertently affect the other responsibilities.
+3. **Minimized Impact of Changes:** Changes prompted by one responsibility won't force unnecessary rebuilding, retesting, and redeployment that could affect unrelated responsibilities.
+
+The following image shows a class that violates the SRP:
+![03](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/ab316e59-6f4b-4b5e-9ee6-ceae8db2f11c)
+
+The design of this software system introduces a challenge where the `InferenceKernel` class has two distinct responsibilities: publishing results to the `SEView` and obtaining rules to infer from the `KnowledgeBase`. 
+Because of its responsibility for SE View, the Inference Kernel is compelled to incorporate QWidget features, resulting in dependencies on this aspect of the Qt Framework. This leads to extended compilation and deployment times. Since the QWidget dependency is unnecessary for the Knowledge Base features, it adds an overhead for every change that the Knowledge Base may require.
+
+For instance, if a change in the Knowledge Base indirectly affects the functionality used by SE View, it can lead to unexpected issues or necessitate retesting of SE View features. This results in increased effort for testing and developing solutions. When a change is made in SE View, it becomes necessary to build features of the Inference Kernel that belong to the Knowledge Base. Additionally, the developer must ensure that all tests related to the Knowledge Base are passing, and the Knowledge Base source code needs to be redeployed.
+
+SRP dictates that the Inference Kernel should be split into separate classes, each with only one responsibility. One set of classes would serve the Knowledge Base, while another set of classes would serve SE View. The following image illustrates a possible approach to comply with SRP:
+![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/86d0f563-b658-495e-bafb-45c9be7bac38)
+
+This new software system design splits the knowledge base features into a class called Workspace, and the SE View features into the Inference Kernel class. In this way, changes from the Inference Kernel class does not affect the Workspace class.
+
+Changes in one class are not going to affect the other class; for example, changes to the Inference Kernel are not going to affect Workspace. There are no unnecessary dependencies between classes. The dependency from the Inference Kernel is moved to an external interface, and the Workspace class is not required to include these dependencies during its development, testing, maintenance, and deployment.
+
+# Source Code level SRP
+The principle similar to SRP for functions is often expressed as: "_A function should do only one thing at a time_." Functions tend to grow in complexity over time, making maintenance, development, and testing more challenging to read and change.
+
+Many Integrated Development Environments (IDEs) include functionality to extract functions from specific instructions. The recommendation is to extract functions until they are not more than 5 lines of code per function. However, this guideline can vary depending on other circumstances, such as the presence of large switch statements that make the logic clearer, the avoidance of passing too many arguments, and avoiding the return of overly complex objects, among other factors. Large functions often conceal class implementation details, where numerous local variables can be transformed into private variables, instructions can be converted into functions, and arguments and return values can be encapsulated within interfaces. Refactoring large functions in this way enhances code modularity, readability, and maintainability. 
+
+
+
+
