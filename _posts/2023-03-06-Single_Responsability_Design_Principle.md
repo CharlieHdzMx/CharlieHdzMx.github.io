@@ -66,6 +66,6 @@ The principle similar to SRP for functions is often expressed as: "_A function s
 
 Many Integrated Development Environments (IDEs) include functionality to extract functions from specific instructions. The recommendation is to extract functions until they are not more than 5 lines of code per function. However, this guideline can vary depending on other circumstances, such as the presence of large switch statements that make the logic clearer, the avoidance of passing too many arguments, and avoiding the return of overly complex objects, among other factors. Large functions often conceal class implementation details, where numerous local variables can be transformed into private variables, instructions can be converted into functions, and arguments and return values can be encapsulated within interfaces. Refactoring large functions in this way enhances code modularity, readability, and maintainability. 
 
-
+Well-named functions are crucial for maintaining readable and understandable code. They serve as documentation and provide clear indications of the purpose of each function. Combining the extraction of functions with meaningful names enhances code readability, making it easier for developers to comprehend the functionality and purpose of different parts of the code.
 
 
