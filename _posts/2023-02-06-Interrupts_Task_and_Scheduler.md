@@ -98,4 +98,28 @@ Race conditions result in outputs that vary based on the order in which instruct
 
 An illustrative example of a race condition occurs when the main program and an Interrupt Service Routine (ISR) share the same variable, let's call it "X." In this scenario, when an interruption occurs, the ISR increments the value of X, while the main application decrements X when its value is non-zero. If the application modifies X and, just before updating the value of X into memory, an interruption takes place, the ISR may also modify the value of X. The critical issue arises when the context saved from the application "overwrites" the ISR-modified value, effectively returning to the original X as if the **interruption never occurred**. This situation highlights the potential conflicts and unexpected outcomes that can arise from race conditions in concurrent program execution.
 
-To address race conditions, the section of the application where the variable X is modified should be enclosed within a block where interruptions are disabled. This ensures that the modification of X is treated as a critical section, where only one operation can be executed at a time. It's important to minimize the number and duration of critical sections to prevent slowing down the system response. 
+To address race conditions, the section of the application where the variable X is modified should be enclosed within a block where interruptions are disabled. This ensures that the modification of X is treated as a critical section, where only one operation can be executed at a time. It's important to minimize the number and duration of critical sections to prevent slowing down the system response.
+
+# Preemption
+Preemption refers to the ability of a processor to interrupt a task or process when a higher-priority task or interrupt occurs. If a low-priority task is not preempted, the higher-priority interrupt must wait until this task is finished before it can be executed.
+
+![02](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/ffe8ff7c-7790-4f9f-830e-7ef8da6cd293)
+
+The data of the task is cleared when the task ends, and the data of the interrupt is not accumulated with the data of the task, as shown in the diagram:
+
+![03](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/36166cd5-497a-454f-8556-2209b830a481)
+
+If a low priority task is to be preempted, the higher priority interrupt will enter immediately, making the task perform several backups of temporal data and store the address of the unfinished operation beginning in the stack. The following diagram illustrates what happens when a task is preempted:
+
+![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/c35af3ca-4b9e-4e0d-9ddb-3df2c08d8423)
+
+Certainly, the data of the task is saved in the stack (Registers + Program Counter Address (PC)) before the interrupt is detected. When the interrupt is detected, its temporal data is piled up in the stack, as shown in the following image:
+
+![05](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/f6f3af21-691a-4439-83e8-af34ca71067f)
+
+If there is a high priority interrupt running, then all the low priority interrupt will wait to be
+dispatched.
+
+
+
+
