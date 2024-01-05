@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Qt Image
-excerpt: Description of a application using Qt command classes
+title: Interface Segregation Principle
+excerpt: ISP
 modified: 5/07/2021, 9:00:24
 tags:
-  - Qt
+  - Design Principles
   - Cpp
+  - Interface
 comments: true
 category: blog
 ---
-![[Pasted image 20231227111913.png]]
