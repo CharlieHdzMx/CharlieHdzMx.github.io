@@ -33,5 +33,12 @@ When modifications are made to existing code, especially when adding new feature
 
 f MechLynx is resistant to changes and modifications are causing ripple effects throughout the system, it's not fully embracing the Open/Closed Principle. An ideal software system should be designed to be open for extension, allowing for new features to be added without modifying existing, stable code. This promotes **flexibility** and **adaptability**, which are crucial aspects of a well-designed and maintainable software system.
 
+A viable solution to adhere to the Open/Closed Principle (OCP) is to introduce an **abstract class** named SyntaxAnalyzer. Both RPNSyntaxAnalyzer and InfixSyntaxAnalyzer can then be implemented as concrete classes that inherit from this abstract class. This design fosters a clear hierarchy and establishes a common interface for various syntax analyzers, aligning with the principle's goal of keeping the system open for extension without necessitating modifications to existing, stable code.
+
+![03](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/253b7c36-39f7-49bf-ae03-d0eeee5caf83)
+
+With this approach, the Infix Syntax Analyzer undergoes minimal changes, transitioning to derive solely from SyntaxAnalyzer. The introduction of an abstract class, SyntaxAnalyzer, facilitates the seamless integration of new features—such as RPN Notation support—without impacting existing code in the Infix Syntax Analyzer.
+
+
 
 
