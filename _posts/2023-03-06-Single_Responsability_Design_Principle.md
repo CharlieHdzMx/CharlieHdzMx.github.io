@@ -5,7 +5,7 @@ excerpt: SRP Design
 modified: 5/07/2021, 9:00:24
 tags:
   - Design Principles
-  - Cpp
+  - SOLID
 comments: true
 category: blog
 ---
