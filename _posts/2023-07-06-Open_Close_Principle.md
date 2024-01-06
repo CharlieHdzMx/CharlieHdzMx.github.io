@@ -39,6 +39,11 @@ A viable solution to adhere to the Open/Closed Principle (OCP) is to introduce a
 
 With this approach, the Infix Syntax Analyzer undergoes minimal changes, transitioning to derive solely from SyntaxAnalyzer. The introduction of an abstract class, SyntaxAnalyzer, facilitates the seamless integration of new features—such as RPN Notation support—without impacting existing code in the Infix Syntax Analyzer.
 
+From a class-level perspective, this implementation aligns with the **Single Responsibility Principle**. The RPN Syntax Analyzer caters specifically to the RPN Notation Expert, while the Infix Syntax Analyzer is tailored for the Infix Notation Expert. This segregation of responsibilities within each class enhances maintainability and readability, contributing to a well-structured and modular system.
+
+![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/50912cd6-deba-407a-907e-896bc455dc85)
+
+
 
 
 
