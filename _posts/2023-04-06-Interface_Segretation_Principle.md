@@ -22,3 +22,6 @@ But the system has different conclusion types, such as Transmission conclusion, 
 
 Certainly, the `ConclusionSetter` class is doing only one thing: setting conclusions. However, the principal problem with this approach is that if any of these conclusions want to change, the logic for all of them can be affected. If, for example, the `EngineConclusion` requires following a hyperlink instead of uploading an icon, then this change is not required by the other conclusion types, but they will be chained to be compiled and be deployed with a feature that they don’t need.
 
+A better approach is to "segregate" the customized features for each conclusion type to be allocated to a personalized interface, later to allocate the main processing to the class `ConclusionSetter`. By this way, this design complies with ISP:
+
+![02](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/9973c99d-2267-4fc9-826a-43a2b62e0675)
