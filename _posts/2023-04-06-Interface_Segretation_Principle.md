@@ -19,3 +19,6 @@ ISP prevents unnecessary dependencies on modules that contain features not requi
 ![01](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/a50e7968-de7f-42d6-8534-835be85c0a1b)
 
 But the system has different conclusion types, such as Transmission conclusion, Engine conclusion, or Brakes conclusion. All these software entities will use the `setItem()` function.
+
+Certainly, the `ConclusionSetter` class is doing only one thing: setting conclusions. However, the principal problem with this approach is that if any of these conclusions want to change, the logic for all of them can be affected. If, for example, the `EngineConclusion` requires following a hyperlink instead of uploading an icon, then this change is not required by the other conclusion types, but they will be chained to be compiled and be deployed with a feature that they don’t need.
+
