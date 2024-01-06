@@ -15,3 +15,7 @@ The **Interface Segregation Principl**e (ISP) is particularly relevant in **stat
 By adhering to ISP in statically typed languages, developers can create fine-grained interfaces that cater to specific client needs, preventing unnecessary recompilation and deployment of unrelated code components. This modular approach enhances maintainability and flexibility in large codebases.
 
 ISP prevents unnecessary dependencies on modules that contain features not required by a particular client. For example, in MechLynx, there is a Conclusion Widget responsible for listing various diagnostics inferred by the system based on user input. The interface used to set a conclusion might look like this:
+
+![01](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/a50e7968-de7f-42d6-8534-835be85c0a1b)
+
+But the system has different conclusion types, such as Transmission conclusion, Engine conclusion, or Brakes conclusion. All these software entities will use the `setItem()` function.
