@@ -6,7 +6,7 @@ modified: 5/07/2021, 9:00:24
 tags:
   - Design Principles
   - Cpp
-  - Interface
+  - SOLID
 comments: true
 category: blog
 ---**
