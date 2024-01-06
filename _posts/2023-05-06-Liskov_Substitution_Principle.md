@@ -4,7 +4,7 @@ title: Liskov Substitute Principle
 excerpt: LSP design
 modified: 5/07/2021, 9:00:24
 tags:
-  - Design Patterns
+  - SOLID
   - Architecture
 comments: true
 category: blog
