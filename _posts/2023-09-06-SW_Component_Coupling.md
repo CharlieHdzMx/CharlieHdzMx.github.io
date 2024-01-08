@@ -35,4 +35,37 @@ Prior to this change, Inference Kernel validation was independent of any package
 This cycle in the dependency graph makes the order of build to be blurred, this can cause difficult to solve problems for **statically typed languages** (C++, C, Java, …).
 
 # The Stable Dependencies Principle
+The **Stable Dependency Principle** (SDP) prescribes that software components designed for ease of modification **should not** be reliant on components intended to be challenging to change. Instead, dependencies among software components should align in the direction of stability, with more stable components serving as the foundation for those that are intended to be more dynamic.
 
+One method to render a software component "A" resistant to change is by establishing dependencies from other software components, denoted as "Bs," upon "A." The degree of dependency increases as "Bs" rely more on additional software components, whether indirectly through "A" or directly from a first-level software component dependency. If "A" lacks dependencies on other software components, it is classified as an **independent software component** by definition.
+
+Stability of a SW Component is the ratio between incoming and outcoming dependencies as follows:
+
+**_I= Fo/Fo+Fi_**
+
+Where: 
+I = Instability; I= 0 means stability, I= 1 means instability
+Fo= Outcoming classes dependencies.
+Fi= Incoming classes dependencies.
+
+Taking the Inference Kernel from the following diagram:
+
+![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/518a6ca3-8229-4d87-807e-a37ee2a614f0)
+
+In this scenario, three SE Presenter classes and two Compiler classes depend on Inference Kernel, while Inference Kernel itself relies on only one class in Workspace. The instability factor (I) of Inference Kernel, calculated as **I = 1/5**, indicates that Inference Kernel is relatively stable. This stability assessment is derived from the proportion of dependencies compared to the total number of classes in Inference Kernel.
+
+Stability is not a universal attribute that all software components should aim to achieve. If all software components are highly stable, the system becomes resistant to change. In contrast, the **Stable** **Dependency Principle** (SDP) advocates for categorizing software components based on their volatility, with the objective of arranging them in a hierarchy that transitions from the highest rate of volatility to the highest rate of stability. This approach allows for a more flexible and adaptable system, where components with varying levels of volatility can be managed and modified effectively.
+
+For example, the next system violates SDP since stable SW Components are depending from a volatile SW Component:
+
+![05](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/3e8fedef-edf0-4662-a0af-93f8a66587b3)
+
+One solution for this system is to use **SOLID** principles to redesign the SW Component relationship, specially using the **Dependency Inversion Principle** (DIP).
+
+# The Stable Abstraction Principle
+The **Stable Abstraction Principle** (SAP) dictates that SW Components shall be as abstract as they are stable; then **SW Components should depend in the direction of abstraction**.
+
+The SAP (Stable Abstraction Principle) suggests a corrective design approach by emphasizing the relationship between abstractness and concreteness. Abstractness enables stable software components to be extended, providing a foundation for building upon existing, well-established structures. On the other hand, concreteness, as the opposite of abstractness, facilitates ease of modification for unstable software components. This principle highlights the importance of balancing abstract and concrete elements in the design to achieve both stability and adaptability within the software system.
+
+Abstractness ratio for a SW Component can be calculated by the following formula:
+**_A= Na/Nc_**
