@@ -68,4 +68,12 @@ The **Stable Abstraction Principle** (SAP) dictates that SW Components shall be 
 The SAP (Stable Abstraction Principle) suggests a corrective design approach by emphasizing the relationship between abstractness and concreteness. Abstractness enables stable software components to be extended, providing a foundation for building upon existing, well-established structures. On the other hand, concreteness, as the opposite of abstractness, facilitates ease of modification for unstable software components. This principle highlights the importance of balancing abstract and concrete elements in the design to achieve both stability and adaptability within the software system.
 
 Abstractness ratio for a SW Component can be calculated by the following formula:
+
 **_A= Na/Nc_**
+
+Where:
+A = Abstractness; A= 0 means full concreteness, A= 1 means full abstractness
+Na= Number of abstract and interfaces class within the SW Component
+Nc= Number of classes in the SW Component.
+
+For example, if Inference Kernel contains 6 classes which 2 are interfaces, then A = 1/3, meaning that is relatively concrete.
