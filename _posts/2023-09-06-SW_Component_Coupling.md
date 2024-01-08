@@ -77,3 +77,14 @@ Na= Number of abstract and interfaces class within the SW Component
 Nc= Number of classes in the SW Component.
 
 For example, if Inference Kernel contains 6 classes which 2 are interfaces, then A = 1/3, meaning that is relatively concrete.
+
+# Main Sequence
+The **main sequence** aids in the design of software components by guiding the determination of their required levels of abstractness and stability. It serves as a framework to establish a balance between the need for abstraction, which allows for extensibility in stable components, and concreteness, which facilitates the ease of modification in less stable components. 
+
+![06](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/50db6a66-9c17-436a-965a-96c4965eb51c)
+
+The "**Too Rigid**" scenario occurs when a software component is characterized by high stability **(I = 0)** and high concreteness **(A = 0)**. This state is undesirable as it signifies a component that is overly inflexible and resistant to change. In this condition, the software component cannot be easily extended, making it challenging to introduce modifications. Therefore, it is not an optimal state for a software component to persist in.
+
+The "Useless" scenario occurs when a software component exhibits high instability **(I = 1)** and high abstractness **(A = 1)**. This state is undesirable as it signifies a component that is overly abstract and unstable, leading to unused code. In this condition, the software component is abstract but lacks utilization by other components, rendering it ineffective and contributing to unnecessary code. Therefore, it is not an optimal state for a software component to persist in.
+
+The Main Sequence is represented by the line that traverses from high instability and high abstractness to low instability and low abstractness. This sequence delineates the ideal range where software components should aim to position themselves. In this zone, the interplay between stability and abstraction does not result in adverse effects on the relationship between the software component and others. This equilibrium facilitates a well-designed system, ensuring that each software component aligns appropriately in terms of stability and abstraction, contributing to overall system integrity and flexibility.
