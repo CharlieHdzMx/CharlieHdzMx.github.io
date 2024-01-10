@@ -19,14 +19,14 @@ __Software Engineer__, Continental
 - Facilitate risk assessment, plan software activities, create work products, and communication with clients.
 - More skills: Git, Jira, Perforce, IMS.
 
-`Octuber/2017-March/2018`
+`October/2017-March/2018`
 __Software Engineer__, GearsTech
 
 - Freelancer specializing in the design and development of custom LED driver applications, utilizing ATMega328 and STM32F4, with proficiency in C++, and Qt.
 - Support projects regarding BitCoin manager app, and Game development based on C++/Qt.
 - More skills: GDB, Git, QML, GCC.
 
-`March/2017- Octuber2017`
+`March/2017- October2017`
 __Software Engineer__, KAL
 
 - Develop one project-based on C++ code and NDC protocol by creating Software to remotely reset the Encrypted Pin Pad and command cash dispenser status report.
