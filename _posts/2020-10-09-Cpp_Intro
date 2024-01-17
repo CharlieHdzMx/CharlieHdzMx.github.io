@@ -23,7 +23,7 @@ For example, the following code snippet illustrates how to declare a function, u
 
 ![02](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/d0b122f4-9274-40ea-a35c-c49a99d926a2)
 
-# Type, Variables & Arithmetic
+## Type, Variables & Arithmetic
 Some fundamental C++ data types include:
 
 - **bool:** Represents true or false values.
@@ -41,6 +41,18 @@ For instance, a typical size for a char is 8 bits, and the sizes of other variab
 With the advent of C++11, the syntax options for object initialization have expanded, but **braced initialization** is the most recommended and versatile syntax. This type of initialization helps prevent narrowing conversions and unintended calls. The following code snippet illustrates this idea:
 
 ![04](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/ee683205-c9aa-4caa-ae9a-f4c10b987e70)
+
+## Points and Arrays
+Pointers can be challenging for inexperienced C++ developers, as it's easy to introduce errors. In my C++ programs, a significant percentage of issues often revolve around pointers. For instance, consider the following code, which explains various operations but ultimately accesses prohibited memory:
+
+![05](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/8ea1f29e-0d48-4593-a13a-4286fed25b02)
+
+It's crucial to note that the prefix unary "*" signifies "contents of," and the prefix unary "&" denotes "address of." Additionally, when we want to express the concept of "no object available," it is recommended to assign the pointer the value nullptr.
+
+# I/O Stream
+
+# Template
+Templates are the foundation of generic programming. They enable the creation of various versions of classes and functions with parameterized types and a shared behavior. Plantillas deben de estar típicamente en los header files, debido a que los compiladores necesitan saber como una plantilla es en orden de instanciarlo al momento de usarlo. The syntax for a template function is as follows:
 
 
 
