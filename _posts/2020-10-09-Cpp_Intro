@@ -50,6 +50,19 @@ Pointers can be challenging for inexperienced C++ developers, as it's easy to in
 It's crucial to note that the prefix unary "*" signifies "contents of," and the prefix unary "&" denotes "address of." Additionally, when we want to express the concept of "no object available," it is recommended to assign the pointer the value nullptr.
 
 # I/O Stream
+Directly writing or reading from/to a specific source might be acceptable for specialized applications. However, as a general practice, it is advisable to separate the way our program reads and writes from the actual input and output device. This approach helps us avoid the need to address specific implementations for each different device, preventing the necessity of modifying our program for every screen or disk in the market. It also ensures that we are not limited to using only a specific set of screens or disks that we happen to prefer, thereby avoiding restrictions on our clients.
+
+In contemporary computing, operating systems segregate the intricacies of managing specific I/O devices into device drivers, enabling programs to access them through a generic I/O library. This practice promotes more efficient and versatile development.
+
+The C++ Standard provides I/O libraries that define output and input for every built-in type. In this article, we will specifically focus on three stream libraries:
+1. **fstream:** Used for reading from a file and writing to a file within the same stream.
+2. **ofstream:** Converts objects in memory into streams of bytes and writes them to the file.
+3. **ifstream:** Takes streams of bytes from the file and assembles objects from it.
+
+# Write a File
+The following snippet shows the basic- recommend steps to write a file using C++:
+
+
 
 # Template
 Templates are the foundation of generic programming. They enable the creation of various versions of classes and functions with parameterized types and a shared behavior. Plantillas deben de estar típicamente en los header files, debido a que los compiladores necesitan saber como una plantilla es en orden de instanciarlo al momento de usarlo. The syntax for a template function is as follows:
