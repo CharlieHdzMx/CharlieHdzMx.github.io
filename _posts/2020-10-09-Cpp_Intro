@@ -65,6 +65,7 @@ The following snippet shows the basic- recommend steps to write a file using C++
 
 
 
+
 # Template
 Templates are the foundation of generic programming. They enable the creation of various versions of classes and functions with parameterized types and a shared behavior. Plantillas deben de estar típicamente en los header files, debido a que los compiladores necesitan saber como una plantilla es en orden de instanciarlo al momento de usarlo. The syntax for a template function is as follows:
 
