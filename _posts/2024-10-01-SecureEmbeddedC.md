@@ -9,6 +9,18 @@ tags:
 comments: true
 category: blog
 ---
+# Secure code
+Secure software does precisely what it is supposed to do. This means it starts in a secure state and cannot transition to an insecure state. Achieving secure code involves learning from past security issues and applying state-of-the-art techniques tailored to specific systems or programming languages, all while maintaining the highest possible code quality.
+
+As C is one of the most popular programming languages, many attackers exploit its vulnerabilities. The reason there are so many vulnerabilities in C and C++ is that these languages trust the programmer to know what they are doing. They aim to be small and simple, prioritizing speed but not guaranteeing portability.
+
+C defines different behaviors for portability issues that can create opportunities for security attacks. Most security vulnerabilities result from Undefined Behavior and Unspecified Behavior.
+
+1. **Undefined Behavior (UB):** Behavior caused by ambiguous failures.
+2. **Unspecified Behavior (USB):** Behavior caused by ambiguous failures.
+3. **Implementation-Defined Behavior (IDB):** Behavior dependent on the compiler implementation.
+4. **Locale-Specific Behavior (LSB):** Ambiguities based on dependencies with locale-specific functions.
+
 # CIA Triad
 ## Confidentiality.
 **Confidentiality** is ensured when a system guarantees that unauthorized acquisition of information is not possible. The principal methods to protect confidentiality are based on data encryption.
@@ -22,6 +34,9 @@ category: blog
 
 ## Availability
 **Availability** is ensured when a system enforces that authenticated and authorized subjects are not denied access by an unauthorized attacker. This can occur when system availability is reduced due to high resource consumption during peak times or through malicious overload attacks.
+
+# Memory segments
+
 
 # Stack buffer overflow
 -
