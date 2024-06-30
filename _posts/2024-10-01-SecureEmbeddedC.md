@@ -9,7 +9,6 @@ tags:
 comments: true
 category: blog
 ---
-
 # CIA Triad
 ## Confidentiality.
 **Confidentiality** is ensured when a system guarantees that unauthorized acquisition of information is not possible. The principal methods to protect confidentiality are based on data encryption.
@@ -20,6 +19,9 @@ category: blog
 1. **Correctness:** Data has not been modified. Data may appear complete, but some bytes might have been altered.
 2. **Completeness:** Data has been fully transferred. Data may be correct, but if not entirely sent, it can cause system misbehavior.
 3. **Freshness:** Data is not outdated. Data may be complete and unmodified, but if too much time has passed, it may be risky to use as it could be obsolete.
+
+# Availability
+**Availability** is ensured when a system enforces that authenticated and authorized subjects are not denied access by an unauthorized attacker. This can occur when system availability is reduced due to high resource consumption during peak times or through malicious overload attacks.
 
 # Stack buffer overflow
 # Pointer Subterfuge
@@ -35,4 +37,3 @@ Function pointers can be vulnerable in two main ways:
 There are several exploits that can be used to overwrite function pointers, with **buffer overflows** being one of the most common. These buffer overflows frequently occur due to a failure to restrict writing within array boundaries, often caused by improperly bounded loops.
 
 For a buffer overflow to affect a function pointer, the buffer must be located in the same segment as the target function pointer. Executables typically have two types of data segments: **Data** and **BSS**. The Data segment contains all initialized global variables and constants, while the BSS segment contains all uninitialized global variables.
-
