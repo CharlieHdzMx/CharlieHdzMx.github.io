@@ -10,6 +10,18 @@ comments: true
 category: blog
 ---
 
+# CIA Triad
+## Confidentiality.
+**Confidentiality** is ensured when a system guarantees that unauthorized acquisition of information is not possible. The principal methods to protect confidentiality are based on data encryption.
+
+## Integrity
+**Integrity** is ensured when a system guarantees that unauthorized subjects cannot manipulate data without being detected. To prevent data manipulation and preserve data integrity within the system, Message Authentication Codes (**MACs**) and **Digital Signatures** are used. The sub-goals of integrity include:
+
+1. **Correctness:** Data has not been modified. Data may appear complete, but some bytes might have been altered.
+2. **Completeness:** Data has been fully transferred. Data may be correct, but if not entirely sent, it can cause system misbehavior.
+3. **Freshness:** Data is not outdated. Data may be complete and unmodified, but if too much time has passed, it may be risky to use as it could be obsolete.
+
+# Stack buffer overflow
 # Pointer Subterfuge
 Function pointers can be overwritten to transfer control to an attacker's code, causing issues in the software. When the program executes the function pointer call, the attacker's code runs instead of the original code.
 
