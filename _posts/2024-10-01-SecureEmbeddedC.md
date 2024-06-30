@@ -17,4 +17,10 @@ Function pointers can also be modified when they are the target of an assignment
 
 Function pointers can be vulnerable in two main ways:
 1. They can be directed to execute code from an attacker, compromising system integrity.
-2. They can be directed to execute original code that triggers a preliminary failure, leading to system misbehavior.lkl
+2. They can be directed to execute original code that triggers a preliminary failure, leading to system misbehavior.
+
+# Buffer overflow exploit.
+There are several exploits that can be used to overwrite function pointers, with **buffer overflows** being one of the most common. These buffer overflows frequently occur due to a failure to restrict writing within array boundaries, often caused by improperly bounded loops.
+
+For a buffer overflow to affect a function pointer, the buffer must be located in the same segment as the target function pointer. Executables typically have two types of data segments: **Data** and **BSS**. The Data segment contains all initialized global variables and constants, while the BSS segment contains all uninitialized global variables.
+
