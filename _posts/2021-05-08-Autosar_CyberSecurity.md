@@ -40,19 +40,7 @@ Along with the main work product process, any system development that includes C
 * **Penetration Testing** is a black-box test performed by expert third parties with already known mechanisms to hack a system.
 * **Security Validation** is a white-box test performed by expert third parties with preconditioned mechanisms to hack a system.
 
-# Software Cryptography Basics
-
-Cryptography is the set of mechanism and algorithm to perform cybersecurity on an SW system. Cryptography is divided into 2 types of cryptography:
-
-* **Symmetric cryptography** uses the same steps to encrypt and decrypt (uses only so called - **public keys**). Decrypt performs the encrypt steps but in reverse order. Symmetrical cryptography can be defined as either block cryptography or data flow cryptography. Since symmetric cryptography relies uniquely on public keys, if one public key is compromised, then all ECU that uses that public key had a security breach. By means of this, the secured public key storage is important and these public keys shall be used uniquely to components that ensure secured key storage, often, these components are managed by the same team (for example, components, that on a specific level, are managed solely by the OEM).
-* **Asymmetric cryptography** uses different steps to encrypt and decrypt (uses public key and private key) Asymmetric keys are perfect for environments where you cannot trust fully to the other component to send or receive secure information. For example, when a component, that is solely accessible by the OEM, requires to send or receive secured verification from a component of a Tier1. Then, the asymmetric cryptography enables the OEM to conserve the private key to "mark" other public keys to be distributed to all the Tier-1's components, so these Tier 1 components can be verified by the data produced by the private key. Thereby, the private key is secured on the infrastructure of the OEM by not being shared by any other team, and if one Tier1 compromises its own public key, this will not compromise all the other Tier1 nor OEM infrastructure. Some examples of asymmetric cryptography are integrating factor, discrete logarithmic function, an elliptical curve.
-
-Some other *complementary* cryptography mechanisms are:
-
-* **Hashes** are interface functions that hide the real values of data sets. They can be used to "hide" the real values of the data that can be decrypt or encrypt by the keys to verify its correctness. Hashes are virtually impossible to revert due any small change in its underlying value causes big changes on the hash.
-* **Protocols** are complex mechanisms to use different types of cipher with hashes.
-
-## Attack Threads
+# Attack Threads
 
 Threads are defined attack types that can be documented as follows:
 
@@ -77,6 +65,18 @@ In certain applications, security layers are based on mutually protective layers
 2. **Communication Within a Cluster**: This can involve the use of Message Authentication Codes (MACs) or freshness verification to ensure message integrity, or message encryption to ensure confidentiality between messages.
 3. **Secure Gateways**: Additional security measures such as intrusion detection mechanisms, firewalls, or Public Key Infrastructure (PKI).
 4. **External Communication Interfaces**: Ensuring the security of communication with external services, such as wireless communication or Over-The-Air (OTA) updates.
+
+# Software Cryptography Basics
+
+Cryptography is the set of mechanism and algorithm to perform cybersecurity on an SW system. Cryptography is divided into 2 types of cryptography:
+
+* **Symmetric cryptography** uses the same steps to encrypt and decrypt (uses only so called - **public keys**). Decrypt performs the encrypt steps but in reverse order. Symmetrical cryptography can be defined as either block cryptography or data flow cryptography. Since symmetric cryptography relies uniquely on public keys, if one public key is compromised, then all ECU that uses that public key had a security breach. By means of this, the secured public key storage is important and these public keys shall be used uniquely to components that ensure secured key storage, often, these components are managed by the same team (for example, components, that on a specific level, are managed solely by the OEM).
+* **Asymmetric cryptography** uses different steps to encrypt and decrypt (uses public key and private key) Asymmetric keys are perfect for environments where you cannot trust fully to the other component to send or receive secure information. For example, when a component, that is solely accessible by the OEM, requires to send or receive secured verification from a component of a Tier1. Then, the asymmetric cryptography enables the OEM to conserve the private key to "mark" other public keys to be distributed to all the Tier-1's components, so these Tier 1 components can be verified by the data produced by the private key. Thereby, the private key is secured on the infrastructure of the OEM by not being shared by any other team, and if one Tier1 compromises its own public key, this will not compromise all the other Tier1 nor OEM infrastructure. Some examples of asymmetric cryptography are integrating factor, discrete logarithmic function, an elliptical curve.
+
+Some other *complementary* cryptography mechanisms are:
+
+* **Hashes** are interface functions that hide the real values of data sets. They can be used to "hide" the real values of the data that can be decrypt or encrypt by the keys to verify its correctness. Hashes are virtually impossible to revert due any small change in its underlying value causes big changes on the hash.
+* **Protocols** are complex mechanisms to use different types of cipher with hashes.
 
 ## Hash function
 A hash function takes one input value with variable length, then the hash maps the output with a predefined length to represent the fingerprint of data. A secure hash function is infeasible to the inverse computation of the output and it is infeasible when two inputs cannot yield to the same mapped output. Hash functions are not defined as cybersecurity mechanisms but are very important as a complement to some real security mechanisms. Usually hash are the transport entity of a private key signature that later is verified against the public key signature that is locally addressed.
@@ -117,11 +117,11 @@ The ECU Flash programming encryption can be performed using two methods:
 
 If the over the air feature is available to the ECU, then it is possible to update the SW application binaries using the same methods as above. OTA might require an additional pair of keys to verify the commands to perform SW update. By this, preventing malicious commands to trigger the SW update to interfere with the processing of real SW updates and therefore avoiding denial of SW update service.
 
-## Vehicle-Tester communication
+# Vehicle-Tester communication
 
 Vehicle Tester communication is the secured way to assign privileges to testers based on the OEM server whitelist back-bone. This is based on platform certifications and root certifications with their respective keys. Here, the tester asks for permission to perform tasks on an ECU by communicating with the OEM server, the OEM server based on the certification request, identifies the tester, and returns with permission to perform the requested tasks.
 
-## OEM Backend communication with the vehicle
+# OEM Backend communication with the vehicle
 
 The vehicle can have communication with  OEM servers by root certifications and platform certifications with their respective keys. This use case is based on TLS and the revocation or change of certification if the ECU have a compromised key.
 
