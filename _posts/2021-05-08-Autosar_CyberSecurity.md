@@ -52,6 +52,16 @@ Some other *complementary* cryptography mechanisms are:
 * **Hashes** are interface functions that hide the real values of data sets. They can be used to "hide" the real values of the data that can be decrypt or encrypt by the keys to verify its correctness. Hashes are virtually impossible to revert due any small change in its underlying value causes big changes on the hash.
 * **Protocols** are complex mechanisms to use different types of cipher with hashes.
 
+## Attack Threads
+
+Threads are defined attack types that can be documented as follows:
+
+* **Spoofing** is the act of disguising a communication by acting as the trusted source, Spoofing is mitigated by protecting secret data by no storing the data in no secured sources, and use appropriate techniques of authentication.
+* **Tampering** is the act of deliberately modifying the data by using non-authorized channels. Tampering is mitigated by using appropriate authorization techniques and complement the use of Hashes, MACs, and digital signatures.
+* **Repudiation** is the act of a system of not having methods to track and log an entity and its actions leaving room for attacks from this entity. Repudiation is mitigated by using digital signatures, use of timestamps during communication between trusted sources, and audit trails.
+* **Information Disclosure** is the failure of a system of not protecting sensitive and confidential information from entities that are not supposed to have access to this kind of information. Information Disclosure is mitigated by authorization requests, encryption of sensitive data, privacy-enhanced protocols, and protection of secret data by not storing this data in unsaved places.
+* **Denial of Service** is the act of shutting down the system, network, or making inducible any source to its intended users. The way to mitigate denial of service attack is by ensuring appropriate authorization and authentication, filtering entities, and ensuring the quality of service of the system.
+
 # Secure Principles
 
 1. **Kerckhoffs Principle** indicates that the security of a system relies almost entirely on the **secrecy of the key** and not on the secrecy of the algorithm.
@@ -62,17 +72,14 @@ Some other *complementary* cryptography mechanisms are:
 7. **Minimize Attack Surface**: In situations where functionality needs protection, reduce unnecessary interactions or activation of other functionalities to avoid side attacks. For example, a function not needed during a verification can be suspended or terminated to limit the attack surface.
 8. **Keep It Simple**: The simpler the security mechanisms and their associated implementation, the easier it is to maintain quality and prevent unforeseen vulnerabilities due to complexity.
 
+In certain applications, security layers are based on mutually protective layers depending on the application level. For example, the layers of a communication protection system may be structured as follows:
+1. **Security Platforms**: This includes secure storage of keys in specific locations, secure platform boot, secure flashing of programs, and the use of cryptographic algorithm libraries or specific protection modules (such as HSM - Hardware Security Module or HTA - Hardware Trust Anchor).
+2. **Communication Within a Cluster**: This can involve the use of Message Authentication Codes (MACs) or freshness verification to ensure message integrity, or message encryption to ensure confidentiality between messages.
+3. **Secure Gateways**: Additional security measures such as intrusion detection mechanisms, firewalls, or Public Key Infrastructure (PKI).
+4. **External Communication Interfaces**: Ensuring the security of communication with external services, such as wireless communication or Over-The-Air (OTA) updates.
+
+## Hash function
 A hash function takes one input value with variable length, then the hash maps the output with a predefined length to represent the fingerprint of data. A secure hash function is infeasible to the inverse computation of the output and it is infeasible when two inputs cannot yield to the same mapped output. Hash functions are not defined as cybersecurity mechanisms but are very important as a complement to some real security mechanisms. Usually hash are the transport entity of a private key signature that later is verified against the public key signature that is locally addressed.
-
-## Attack Threads
-
-Threads are defined attack types that can be documented as follows:
-
-* **Spoofing** is the act of disguising a communication by acting as the trusted source, Spoofing is mitigated by protecting secret data by no storing the data in no secured sources, and use appropriate techniques of authentication.
-* **Tampering** is the act of deliberately modifying the data by using non-authorized channels. Tampering is mitigated by using appropriate authorization techniques and complement the use of Hashes, MACs, and digital signatures.
-* **Repudiation** is the act of a system of not having methods to track and log an entity and its actions leaving room for attacks from this entity. Repudiation is mitigated by using digital signatures, use of timestamps during communication between trusted sources, and audit trails.
-* **Information Disclosure** is the failure of a system of not protecting sensitive and confidential information from entities that are not supposed to have access to this kind of information. Information Disclosure is mitigated by authorization requests, encryption of sensitive data, privacy-enhanced protocols, and protection of secret data by not storing this data in unsaved places.
-* **Denial of Service** is the act of shutting down the system, network, or making inducible any source to its intended users. The way to mitigate denial of service attack is by ensuring appropriate authorization and authentication, filtering entities, and ensuring the quality of service of the system.
 
 ## Symmetric cryptography
 
