@@ -56,11 +56,11 @@ Some other *complementary* cryptography mechanisms are:
 
 1. **Kerckhoffs Principle** indicates that the security of a system relies almost entirely on the **secrecy of the key** and not on the secrecy of the algorithm.
 2. **Application of Security Layers**: It is not advisable to rely solely on one layer of security. It is necessary to protect various layers, such as the ECU, the communication network within a set of ECUs, or the entire vehicle network.
-3. **Trust Boundaries**: Define specific protection mechanisms based on which entities can be trusted and which cannot.
-4. **Minimize Privileges**: Grant the minimum necessary privileges to as few entities as possible.
-5. **Security by Default**: Assume the system will have vulnerabilities and establish measures to reduce the impact.
-6. **Minimize Attack Surface**: In situations where functionality needs protection, reduce unnecessary interactions or activation of other functionalities to avoid side attacks. For example, a function not needed during a verification can be suspended or terminated to limit the attack surface.
-7. **Keep It Simple**: The simpler the security mechanisms and their associated implementation, the easier it is to maintain quality and prevent unforeseen vulnerabilities due to complexity.
+4. **Trust Boundaries**: Define specific protection mechanisms based on which entities can be trusted and which cannot.
+5. **Minimize Privileges**: Grant the minimum necessary privileges to as few entities as possible.
+6. **Security by Default**: Assume the system will have vulnerabilities and establish measures to reduce the impact.
+7. **Minimize Attack Surface**: In situations where functionality needs protection, reduce unnecessary interactions or activation of other functionalities to avoid side attacks. For example, a function not needed during a verification can be suspended or terminated to limit the attack surface.
+8. **Keep It Simple**: The simpler the security mechanisms and their associated implementation, the easier it is to maintain quality and prevent unforeseen vulnerabilities due to complexity.
 
 A hash function takes one input value with variable length, then the hash maps the output with a predefined length to represent the fingerprint of data. A secure hash function is infeasible to the inverse computation of the output and it is infeasible when two inputs cannot yield to the same mapped output. Hash functions are not defined as cybersecurity mechanisms but are very important as a complement to some real security mechanisms. Usually hash are the transport entity of a private key signature that later is verified against the public key signature that is locally addressed.
 
