@@ -52,19 +52,19 @@ Threads are defined attack types that can be documented as follows:
 
 # Secure Principles
 
-1. **Kerckhoffs Principle** indicates that the security of a system relies almost entirely on the **secrecy of the key** and not on the secrecy of the algorithm.
-2. **Application of Security Layers**: It is not advisable to rely solely on one layer of security. It is necessary to protect various layers, such as the ECU, the communication network within a set of ECUs, or the entire vehicle network.
-4. **Trust Boundaries**: Define specific protection mechanisms based on which entities can be trusted and which cannot.
-5. **Minimize Privileges**: Grant the minimum necessary privileges to as few entities as possible.
-6. **Security by Default**: Assume the system will have vulnerabilities and establish measures to reduce the impact.
-7. **Minimize Attack Surface**: In situations where functionality needs protection, reduce unnecessary interactions or activation of other functionalities to avoid side attacks. For example, a function not needed during a verification can be suspended or terminated to limit the attack surface.
-8. **Keep It Simple**: The simpler the security mechanisms and their associated implementation, the easier it is to maintain quality and prevent unforeseen vulnerabilities due to complexity.
+* **Kerckhoffs Principle** indicates that the security of a system relies almost entirely on the **secrecy of the key** and not on the secrecy of the algorithm.
+* **Application of Security Layers**: It is not advisable to rely solely on one layer of security. It is necessary to protect various layers, such as the ECU, the communication network within a set of ECUs, or the entire vehicle network.
+* **Trust Boundaries**: Define specific protection mechanisms based on which entities can be trusted and which cannot.
+* **Minimize Privileges**: Grant the minimum necessary privileges to as few entities as possible.
+* **Security by Default**: Assume the system will have vulnerabilities and establish measures to reduce the impact.
+* **Minimize Attack Surface**: In situations where functionality needs protection, reduce unnecessary interactions or activation of other functionalities to avoid side attacks. For example, a function not needed during a verification can be suspended or terminated to limit the attack surface.
+* **Keep It Simple**: The simpler the security mechanisms and their associated implementation, the easier it is to maintain quality and prevent unforeseen vulnerabilities due to complexity.
 
 In certain applications, security layers are based on mutually protective layers depending on the application level. For example, the layers of a communication protection system may be structured as follows:
-1. **Security Platforms**: This includes secure storage of keys in specific locations, secure platform boot, secure flashing of programs, and the use of cryptographic algorithm libraries or specific protection modules (such as HSM - Hardware Security Module or HTA - Hardware Trust Anchor).
-2. **Communication Within a Cluster**: This can involve the use of Message Authentication Codes (MACs) or freshness verification to ensure message integrity, or message encryption to ensure confidentiality between messages.
-3. **Secure Gateways**: Additional security measures such as intrusion detection mechanisms, firewalls, or Public Key Infrastructure (PKI).
-4. **External Communication Interfaces**: Ensuring the security of communication with external services, such as wireless communication or Over-The-Air (OTA) updates.
+* **Security Platforms**: This includes secure storage of keys in specific locations, secure platform boot, secure flashing of programs, and the use of cryptographic algorithm libraries or specific protection modules (such as HSM - Hardware Security Module or HTA - Hardware Trust Anchor).
+* **Communication Within a Cluster**: This can involve the use of Message Authentication Codes (MACs) or freshness verification to ensure message integrity, or message encryption to ensure confidentiality between messages.
+* **Secure Gateways**: Additional security measures such as intrusion detection mechanisms, firewalls, or Public Key Infrastructure (PKI).
+* **External Communication Interfaces**: Ensuring the security of communication with external services, such as wireless communication or Over-The-Air (OTA) updates.
 
 # Software Cryptography Basics
 
@@ -78,19 +78,19 @@ Some other *complementary* cryptography mechanisms are:
 * **Hashes** are interface functions that hide the real values of data sets. They can be used to "hide" the real values of the data that can be decrypt or encrypt by the keys to verify its correctness. Hashes are virtually impossible to revert due any small change in its underlying value causes big changes on the hash.
 * **Protocols** are complex mechanisms to use different types of cipher with hashes.
 
-## Hash function
-A hash function takes one input value with variable length, then the hash maps the output with a predefined length to represent the fingerprint of data. A secure hash function is infeasible to the inverse computation of the output and it is infeasible when two inputs cannot yield to the same mapped output. Hash functions are not defined as cybersecurity mechanisms but are very important as a complement to some real security mechanisms. Usually hash are the transport entity of a private key signature that later is verified against the public key signature that is locally addressed.
+Comparing asymmetric and symmetric cryptography isn't entirely necessary since their use cases differ. Symmetric cryptography excels because it requires only one short key to manage, but maintaining secrecy becomes more challenging with many communication partners or complex networks. In contrast, asymmetric cryptography, despite needing both public and private keys which are relatively long and slower, offers stronger secrecy and linear complexity.
 
 ## Symmetric cryptography
-
 Symmetric cryptography uses the same key to encrypt and decrypt. This type of encryption is normally used for data confidentiality, integrity, and authenticity that requires low-profile security mechanism. The distribution of keys shall be careful because anyone with the key can access all security mechanisms. 
 
 The most common symmetric cryptography is the **Advanced Encryption Standard (AES)**, AES is based on block cryptography algorithms and needs the inputs of the key and the fixed data length (128 bits, 192 bits, or 256 bits). AES performs cycles of encryption rounds, these rounds operate combinations of byte substitution, shifting of bytes, or key addition to produce a CipherText.
 
-In general, symmetric cryptography can create **messages of authentication of code (MACs)** during their procedure using the secret key. MAC is a fixed-side digital code that can be only created by the key creator. The MAC is transmitted along with the encrypted data, if the receiver can decipher the MAC, then it is assumed that the encrypted data can be decrypted too. There are two types of MACs, the one defined by hash functions **(HMAC)** or the one defined by block encryption **(CMAC)**.
+### MACs
+In general, symmetric cryptography can create **messages of authentication of code (MACs)** during their procedure using the secret key.The MAC is generated by a **unique digital authentication code** for a file or message. This fixed-size digital code is created using a symmetric key, which only the key owner can use to generate the code. The data is transmitted in plain text along with the authentication codes, and upon receipt, the receiver can verify the authenticity of the message using the key.
+
+There are two types of MACs, the one defined by hash functions **(HMAC)** or the one defined by block encryption **(CMAC)**.
 
 ## Asymmetric cryptography
-
 Asymmetric cryptography uses two keys (one public and another private), These keys have relatively large lengths. The public key can be shared with all the entities that can collaborate with the system; whereas the private key cannot be shared with all the entities of the system and shall be dedicated to a specific entity.
 
 Asymmetric cryptography algorithms are based on one key encrypting the data and the other one decrypts the data. For example, if the public key is used to encrypt data, then the private key is used to decrypt the data.
@@ -104,6 +104,9 @@ The **digital signature** is based on asymmetric cryptography and offers data au
 Digital signatures are mainly used by **certifications**. Certifications are mechanisms to ensure that one data-sending component is allowed to send those data. Certifications might contain personal data from the sender (for example IDs, sensitive information) to be identified, this personal data can have expiration time.
 
 The automotive industry permits secure interaction of the ECU with diagnostic tools or external *back-ends* using certifications. This ECU access is supported by different certifications for each access level (Root, Tester, Checker, …).
+
+## Hash function
+A hash function takes one input value with variable length, then the hash maps the output with a predefined length to represent the fingerprint of data. A secure hash function is infeasible to the inverse computation of the output and it is infeasible when two inputs cannot yield to the same mapped output. Hash functions are not defined as cybersecurity mechanisms but are very important as a complement to some real security mechanisms. Usually hash are the transport entity of a private key signature that later is verified against the public key signature that is locally addressed.
 
 # Cybersecurity use cases on the Automotive industry
 ## Flash Programming
