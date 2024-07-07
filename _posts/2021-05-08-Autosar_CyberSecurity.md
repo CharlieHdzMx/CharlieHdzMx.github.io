@@ -108,9 +108,22 @@ The automotive industry permits secure interaction of the ECU with diagnostic to
 ## Hash function
 A hash function takes one input value with variable length, then the hash maps the output with a predefined length to represent the fingerprint of data. A secure hash function is infeasible to the inverse computation of the output and it is infeasible when two inputs cannot yield to the same mapped output. Hash functions are not defined as cybersecurity mechanisms but are very important as a complement to some real security mechanisms. Usually hash are the transport entity of a private key signature that later is verified against the public key signature that is locally addressed.
 
+# Secure Primitives
+There are two types of architectures for handling security primitives. One of them involves having the primitive software on the CPU of the microcontroller. However, this approach lacks hardware support, resulting in no processing acceleration and potential resource dependencies with the CPU. The benefit, though, is that it allows for easy updates to the cryptographic logic.
+
+In the other case, we can move the processing of cryptographic algorithms to an external module connected to the CPU via internal peripherals. This hardware-based approach enables processing acceleration, and application data as well as keys can be stored in a more secure and less accessible location. However, changing the hardware in this scenario would be more challenging.
+
+## Secure Hardware Extension
+The Secure Hardware Extension (**SHE**) is a security anchor that defines fundamental cryptographic service features, located in a secure zone. It provides services to the application layer and isolates secret keys from the rest of the MCU resources. This storage is not accessible by the application, and the keys are referenced by indexes.
+
+## Hardware Security Module
+The Hardware Security Module (**HSM**) strengthens the ECU against attacks and accelerates the processing of cryptographic functions, based on the EVITA standard, as follows:
+1. **HSM Full**: Supports strong authentication and complex block ciphers with high performance.
+2. **HSM Medium**: Ensures secure end-to-end communication.
+3. **HSM Small**: Provides security only for critical sensors and simple block ciphers.
+4. 
 # Cybersecurity use cases on the Automotive industry
 ## Flash Programming
-
 The ECU Flash programming encryption can be performed using two methods:
 
 * **HMACs use**. The manufacturer creates an HMAC by a secret key and a hash. Then the manufacturer transfers the file to reflash along with the HMAC to the ECU. The ECU takes the HMAC and compares it to the decrypted HMAC by the secret key. If the HMAC verification is correct, then the ECU reflash is permitted.
