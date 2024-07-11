@@ -67,7 +67,6 @@ In certain applications, security layers are based on mutually protective layers
 * **External Communication Interfaces**: Ensuring the security of communication with external services, such as wireless communication or Over-The-Air (OTA) updates.
 
 # Software Cryptography Basics
-
 Cryptography is the set of mechanism and algorithm to perform cybersecurity on an SW system. Cryptography is divided into 2 types of cryptography:
 
 * **Symmetric cryptography** uses the same steps to encrypt and decrypt (uses only so called - **public keys**). Decrypt performs the encrypt steps but in reverse order. Symmetrical cryptography can be defined as either block cryptography or data flow cryptography. Since symmetric cryptography relies uniquely on public keys, if one public key is compromised, then all ECU that uses that public key had a security breach. By means of this, the secured public key storage is important and these public keys shall be used uniquely to components that ensure secured key storage, often, these components are managed by the same team (for example, components, that on a specific level, are managed solely by the OEM).
@@ -187,7 +186,21 @@ A CSM Key is a secret bit array that represents a private, public, or shared key
 * **Key**, is an instance of a key type.
 
 #### CSM Key Elements
+Key element IDs are not unique, whereas key IDs must be unique within the system. According to the AUTOSAR standard, key elements have IDs less than 1000, while vendor-specific key elements have IDs greater than or equal to 1000.
 
+#### CSM Key Element Attributes
+Key elements define additional attributes for a key. Each key has a reference in each of the cryptographic modules. For example, the definition of Key A references the CSM, CryIf, and Crypto Driver modules. The management of key elements in CSM is based on handling functions such as:
+
+ * Write access
+ * Read access
+ * Persistency
+ * Initial value
+ * Size
+Each key has a reference in each of the cryptographic modules. For example, Key A is referenced by the CSM, CryIf, and Crypto Driver modules.
+
+Operations such as setting a key element using the function Csm_KeyElementSet(), reading a key element using Csm_KeyElementGet(), indicating key correctness, and copying key elements can be called synchronously or asynchronously.
+
+Asynchronous  operations block the process each time a key element is being processed and are released in the next cycle of execution of the main function where the key element is defined as completed. Synchronous operations are triggered and do not block any processing but incur overhead costs due to the asynchronous function calls.
 
 ### CSM primitives
 CSM primitives define each job type based on:
