@@ -196,6 +196,7 @@ Key elements define additional attributes for a key. Each key has a reference in
  * Persistency
  * Initial value
  * Size
+   
 Each key has a reference in each of the cryptographic modules. For example, Key A is referenced by the CSM, CryIf, and Crypto Driver modules.
 
 Operations such as setting a key element using the function Csm_KeyElementSet(), reading a key element using Csm_KeyElementGet(), indicating key correctness, and copying key elements can be called synchronously or asynchronously.
