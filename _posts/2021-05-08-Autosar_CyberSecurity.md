@@ -112,6 +112,30 @@ There are two types of architectures for handling security primitives. One of th
 
 In the other case, we can move the processing of cryptographic algorithms to an **external module** connected to the CPU via internal peripherals. This hardware-based approach enables processing acceleration, and application data as well as keys can be stored in a more secure and less accessible location. However, changing the hardware in this scenario would be more challenging.
 
+# Routing Paths
+## Csm Queues
+**CSM Queues** are queues hosted in CSM that allow requests for **CSM jobs** from multiple clients in the application. They handle the **dispatch** of these jobs with the driver object mapped through a CryIf channel. They provide an **internal or external buffer** to hold Crypto requests so that the Crypto Driver can process each CSM job one by one.
+
+## Csm Job
+**CSM Jobs** represent cryptographic operations in CSM. They contain information on how the crypto service will be processed by the driver. This information includes references to the Crypto primitive, queue, and key, as well as the priority and **processing mode** (synchronous or asynchronous). The **operation modes** of a CSM Job determine whether the normal streaming is used, where there is a call for each START, UPDATE, and FINISH during CSM processing, or if a single call is made that waits for the driver to process START, UPDATE, and FINISH in one go.
+
+### Processing Mode
+**Synchronous processing** allows CSM jobs to be processed immediately in the context of the caller, and the result is received when the driver function returns. For **asynchronous processing**, CSM jobs are not processed immediately upon being called. Instead, their processing depends on the prioritization of the CSM job within the CSM queue alongside other jobs. Each job in this mode has its own Crypto driver object, which uses a callback to indicate the processing result and can reject the job if it is in a busy state.
+
+The scheduling of an asynchronous job is as follows:
+1. Upon receiving a request from the CSM function, the job is added to the queue.
+2. When Csm_MainFunction is called, it processes the highest-priority job in the queue.
+3. A job is executed each time Csm_MainFunction is called.
+4. The job is removed from the queue when Csm_MainFunction returns a completion or cancellation status.
+	1. If the queue is empty, the job is processed immediately.
+	2. If the queue has jobs, the highest-priority job is processed immediately.
+
+### Operation Mode
+**Streaming** is a mode that defines communication with a START command, allowing multiple processes to be sent in different chunks to keep the buffer size small. The UPDATE command can be called multiple times to change the input data sent in chunks, and finally, the FINISH command is called to indicate that the stream has ended.
+
+**SingleCall** is a mode where the START, UPDATE, and FINISH commands are processed in a single call. The input data size is crucial because it is sent only once, and any overload can cause configuration issues. This mode can achieve better processing efficiency because a single call with small input data uses fewer resources compared to the Streaming mode.
+
+# Secure hardware
 ## Secure Hardware Extension
 The Secure Hardware Extension (**SHE**) is a security anchor that defines fundamental cryptographic service features, located in a secure zone. It provides services to the application layer and isolates secret keys from the rest of the MCU resources. This storage is not accessible by the application, and the keys are referenced by indexes.
 
