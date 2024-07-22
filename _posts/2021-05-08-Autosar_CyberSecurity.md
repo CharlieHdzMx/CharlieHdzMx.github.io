@@ -9,7 +9,6 @@ category: blog
 ---
 
 # Introduction
-
 **Cybersecurity** is any collection of mechanisms and processes to protect a system from malicious attacks. Notice that this concept is different from Functional Safety which  the is a mechanisms to protects the ECU, the system and users systematic failures within the ECU malfunctioning. The majority of mechanism analyzed here are software mechanisms, and those software mechanisms is based on the implementation of **keys of security** based on the secured communication and secured identification of the components related to the secured communication. Cybersecurity also relates to processes that can argue and justify that a system is secured against malicious attacks based on the analysis of the intrinsic nature of the system.
 
 The principal concepts describing Cybersecurity on automotive ECUs are:
@@ -26,7 +25,7 @@ The main use case of Cyber security in the Automotive industry are:
 * **End 2 End (E2E) secured communication**. The secured communication between ECUs within a vehicle network. This encloses authenticity and verification of messages among components.
 * **Vehicle connectivity with outsiders**. Secured Car2X communication for over the air software updates (OTA), and hot-spots for in-car Infotainment.
 
-# Automotive Cybersecurity methodology
+## Automotive Cybersecurity methodology
 
 Along with the main work product process, any system development that includes Cybersecurity has to comply with the following work products (as the client required) from the beginning of the project:
 
@@ -40,7 +39,7 @@ Along with the main work product process, any system development that includes C
 * **Penetration Testing** is a black-box test performed by expert third parties with already known mechanisms to hack a system.
 * **Security Validation** is a white-box test performed by expert third parties with preconditioned mechanisms to hack a system.
 
-# Attack Threads
+## Attack Threads
 
 Threads are defined attack types that can be documented as follows:
 
@@ -50,7 +49,7 @@ Threads are defined attack types that can be documented as follows:
 * **Information Disclosure** is the failure of a system of not protecting sensitive and confidential information from entities that are not supposed to have access to this kind of information. Information Disclosure is mitigated by authorization requests, encryption of sensitive data, privacy-enhanced protocols, and protection of secret data by not storing this data in unsaved places.
 * **Denial of Service** is the act of shutting down the system, network, or making inducible any source to its intended users. The way to mitigate denial of service attack is by ensuring appropriate authorization and authentication, filtering entities, and ensuring the quality of service of the system.
 
-# Secure Principles
+## Secure Principles
 
 * **Kerckhoffs Principle** indicates that the security of a system relies almost entirely on the **secrecy of the key** and not on the secrecy of the algorithm.
 * **Application of Security Layers**: It is not advisable to rely solely on one layer of security. It is necessary to protect various layers, such as the ECU, the communication network within a set of ECUs, or the entire vehicle network.
@@ -111,29 +110,6 @@ A hash function takes an **input** of variable size and produces a fixed-size ou
 There are two types of architectures for handling security primitives. One of them involves having the primitive software on the **CPU of the microcontroller**. However, this approach lacks hardware support, resulting in no processing acceleration and potential resource dependencies with the CPU. The benefit, though, is that it allows for easy updates to the cryptographic logic.
 
 In the other case, we can move the processing of cryptographic algorithms to an **external module** connected to the CPU via internal peripherals. This hardware-based approach enables processing acceleration, and application data as well as keys can be stored in a more secure and less accessible location. However, changing the hardware in this scenario would be more challenging.
-
-# Routing Paths
-## Csm Queues
-**CSM Queues** are queues hosted in CSM that allow requests for **CSM jobs** from multiple clients in the application. They handle the **dispatch** of these jobs with the driver object mapped through a CryIf channel. They provide an **internal or external buffer** to hold Crypto requests so that the Crypto Driver can process each CSM job one by one.
-
-## Csm Job
-**CSM Jobs** represent cryptographic operations in CSM. They contain information on how the crypto service will be processed by the driver. This information includes references to the Crypto primitive, queue, and key, as well as the priority and **processing mode** (synchronous or asynchronous). The **operation modes** of a CSM Job determine whether the normal streaming is used, where there is a call for each START, UPDATE, and FINISH during CSM processing, or if a single call is made that waits for the driver to process START, UPDATE, and FINISH in one go.
-
-### Processing Mode
-**Synchronous processing** allows CSM jobs to be processed immediately in the context of the caller, and the result is received when the driver function returns. For **asynchronous processing**, CSM jobs are not processed immediately upon being called. Instead, their processing depends on the prioritization of the CSM job within the CSM queue alongside other jobs. Each job in this mode has its own Crypto driver object, which uses a callback to indicate the processing result and can reject the job if it is in a busy state.
-
-The scheduling of an asynchronous job is as follows:
-1. Upon receiving a request from the CSM function, the job is added to the queue.
-2. When Csm_MainFunction is called, it processes the highest-priority job in the queue.
-3. A job is executed each time Csm_MainFunction is called.
-4. The job is removed from the queue when Csm_MainFunction returns a completion or cancellation status.
-	1. If the queue is empty, the job is processed immediately.
-	2. If the queue has jobs, the highest-priority job is processed immediately.
-
-### Operation Mode
-**Streaming** is a mode that defines communication with a START command, allowing multiple processes to be sent in different chunks to keep the buffer size small. The UPDATE command can be called multiple times to change the input data sent in chunks, and finally, the FINISH command is called to indicate that the stream has ended.
-
-**SingleCall** is a mode where the START, UPDATE, and FINISH commands are processed in a single call. The input data size is crucial because it is sent only once, and any overload can cause configuration issues. This mode can achieve better processing efficiency because a single call with small input data uses fewer resources compared to the Streaming mode.
 
 # Secure hardware
 ## Secure Hardware Extension
@@ -227,6 +203,28 @@ Operations such as setting a key element using the function Csm_KeyElementSet(),
 
 Asynchronous  operations block the process each time a key element is being processed and are released in the next cycle of execution of the main function where the key element is defined as completed. Synchronous operations are triggered and do not block any processing but incur overhead costs due to the asynchronous function calls.
 
+## Csm Queues
+**CSM Queues** are queues hosted in CSM that allow requests for **CSM jobs** from multiple clients in the application. They handle the **dispatch** of these jobs with the driver object mapped through a CryIf channel. They provide an **internal or external buffer** to hold Crypto requests so that the Crypto Driver can process each CSM job one by one.
+
+## Csm Job
+**CSM Jobs** represent cryptographic operations in CSM. They contain information on how the crypto service will be processed by the driver. This information includes references to the Crypto primitive, queue, and key, as well as the priority and **processing mode** (synchronous or asynchronous). The **operation modes** of a CSM Job determine whether the normal streaming is used, where there is a call for each START, UPDATE, and FINISH during CSM processing, or if a single call is made that waits for the driver to process START, UPDATE, and FINISH in one go.
+
+### Processing Mode
+**Synchronous processing** allows CSM jobs to be processed immediately in the context of the caller, and the result is received when the driver function returns. For **asynchronous processing**, CSM jobs are not processed immediately upon being called. Instead, their processing depends on the prioritization of the CSM job within the CSM queue alongside other jobs. Each job in this mode has its own Crypto driver object, which uses a callback to indicate the processing result and can reject the job if it is in a busy state.
+
+The scheduling of an asynchronous job is as follows:
+1. Upon receiving a request from the CSM function, the job is added to the queue.
+2. When Csm_MainFunction is called, it processes the highest-priority job in the queue.
+3. A job is executed each time Csm_MainFunction is called.
+4. The job is removed from the queue when Csm_MainFunction returns a completion or cancellation status.
+	1. If the queue is empty, the job is processed immediately.
+	2. If the queue has jobs, the highest-priority job is processed immediately.
+
+### Operation Mode
+**Streaming** is a mode that defines communication with a START command, allowing multiple processes to be sent in different chunks to keep the buffer size small. The UPDATE command can be called multiple times to change the input data sent in chunks, and finally, the FINISH command is called to indicate that the stream has ended.
+
+**SingleCall** is a mode where the START, UPDATE, and FINISH commands are processed in a single call. The input data size is crucial because it is sent only once, and any overload can cause configuration issues. This mode can achieve better processing efficiency because a single call with small input data uses fewer resources compared to the Streaming mode.
+
 ### CSM primitives
 CSM primitives define each job type based on:
 
@@ -246,6 +244,9 @@ CSM can enable the user to define function as **preprocessing** and **postproces
 
 ## CryIf
 CryIf is the implementation of cryptography abstraction made by the crypto drivers and coordinated by CSM access. CryIf offers independent interfaces from HW/SW crypto drivers to superior channels to process the crypto operations.
+
+## CryIf Channels
+**CryIf channels** have a one-to-one relationship with a single Csm Queue and a single Crypto Driver object. This channel determines which Crypto Driver object processes a Csm Job from a Csm Queue. For asynchronous jobs, the Crypto Driver notifies CryIf with a callback when a request has been completed. CryIf enables the connection of multiple Crypto Driver objects.
 
 ## CryDrv
 Crypto Drivers are the principal responsibilities of the crypto operations. They specify the crypto capabilities and the composition of the key, as well as, the keys access properties.
@@ -292,7 +293,7 @@ Conditions of Out of sync counter happens when 2 counter mismatch during E2E com
 * **Challenge-response protocol**. This approach is able to detect large differences in the freshness values from two ECUs. Challenge-response protocol is a “challenge” special message from one ECU to another to perform a sync execution.
 * **Periodic counter-message**. This approach injects periodic messages to the schedule to verify the counter from both ECUs and thereby avoiding out of sync conditions.
 
-## Special case Transport Layer Security
+# Special case Transport Layer Security
 
 Transport Layer Security (**TLS**) ensures the data exchange privacy and integrity on the TCP protocol, which alone cannot ensure these features. TLS is the abstraction of the Session layer at the Ethernet communication stack. This layer is just above the transport layer (TCP in this case).
 
