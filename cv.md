@@ -27,9 +27,9 @@ __Software Engineer__, GearsTech Mexico
 `March/2017- October2017`
 __Software Engineer__, KAL Mexico
 
-- Develop one project-based on C++ code and NDC protocol by creating Software to remotely reset the Encrypted Pin Pad and command cash dispenser status report.
-- Proficient in the migration plan for C++98 modules to C++11 delivering a document of source code and tool dependency changes.
--  Close technical support to international clients.
+- Developed a project using C++ code and NDC protocol to remotely reset Encrypted Pin Pad and command cash dispenser status report.
+- Proficient in migrating C++98 modules to C++11, delivering source code and tool dependency changes.
+- Provided close technical support to international clients.
 
 # Education
 
