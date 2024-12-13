@@ -55,8 +55,6 @@ Mechanic Technologist degree.
 - **Elektrobit, Autosar Basic**.
 - **Intel Guadalajara, Artificial Intelligence using Matlab**.
 - **CppCon, C++ Conference 2020- Training and Talks**.
-
 <!-- ### Footer
-
 Last updated: May 2020 -->
 
