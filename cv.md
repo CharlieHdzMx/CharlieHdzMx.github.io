@@ -15,14 +15,13 @@ __Software Engineer__, Continental Mexico
 
 - Specialized in AUTOSAR configuration for OTA, CAN, UDS, and LIN using Vector tools.
 - Managed software development process with ASPICE, DOORS, Git, JIRA, and Simulink.
-- Conducted risk assessments, planned software activities, and communicated with clients at Continental in Guadalajara, Mexico.
+- Conducted risk assessments, planned software activities, and communicated with clients at Continental from Ford.
 
 `October/2017-March/2018`
 __Software Engineer__, GearsTech Mexico
 
 - Designed custom LED driver app using ATMega328 and STM32F4 in C++ and Qt.
 - Supported projects for BitCoin manager app and game development in C++/Qt.
-- Contributed to innovative solutions for GearsTech in Guadalajara Area, Mexico.
 
 `March/2017- October2017`
 __Software Engineer__, KAL Mexico
