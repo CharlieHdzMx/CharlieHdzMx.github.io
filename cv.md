@@ -32,15 +32,18 @@ __Software Engineer__, KAL Mexico
 
 # Education
 
-`2016 – 2016
+`2016 – 2016`
 __University of Oklahoma__
 CEFR C1 English level.
 
-`2011 – 2016
+`2011 – 2016`
 __CETI Colomos__
 Mechatronics Engineer degree.
+- Improve “UrbanFarm”, Embedded System for urban food cultivation.
+- Develop Artificial Intelligence to detect malfunctions in automobiles.
+- Develop GPS receiver using DEMO9508QG8.
 
-`2007 – 2011
+`2007 – 2011`
 __CETI Colomos__
 Mechanic Technologist degree.
 
