@@ -4,11 +4,11 @@ layout: resume
 # Jobs
 
 `July/2021-Current`
-__Software Engineer__, Innolux
-- Responsible for Design and Development process ownership in ASPICE projects developing using C.
-- Software Engineer specializing in configuring BSW and SWCs with expertise in the Vector toolchain (Davinci, Candela, Canoe, …) and Enterprise Architecture for VW projects.
-- Co-owner of the Software Cybersecurity process with expertise in integrating E2E features.
-- More skills: Tessy.
+__Software Engineer and Sw Technical Project Lead__, Innolux
+• Managed software development projects as a Technical Project Leader, ensuring client communication and monitoring problem reports.
+• Designed Software Architecture focusing on Functional Safety mechanisms and compliance with external specifications.
+• Developed Autosar projects with configuration using Vector tools and Enterprise architect.
+• Owned the ASPICE Process for Software Detailed Design and Development, presenting for external audits and collaborating with the team.
 
 `March/2018-July/2021`
 __Software Engineer__, Continental
