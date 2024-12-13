@@ -4,30 +4,28 @@ layout: resume
 # Jobs
 
 `July/2021-Current`
-__Software Engineer and Sw Technical Project Lead__, Innolux
+__Software Engineer and Sw Technical Project Lead__, Innolux Netherlands
 - Managed software development projects as a Technical Project Leader, ensuring client communication and monitoring problem reports.
 - Designed Software Architecture focusing on Functional Safety mechanisms and compliance with external specifications.
 - Developed Autosar projects with configuration using Vector tools and Enterprise architect.
 - Owned the ASPICE Process for Software Detailed Design and Development, presenting for external audits and collaborating with the team.
 
 `March/2018-July/2021`
-__Software Engineer__, Continental
+__Software Engineer__, Continental Mexico
 
-- Experienced in integrating Autosar configuration for OTA software download, CAN, UDS, and LIN using the Vector toolchain (Davinci, Candela, Canoe, …).
-- Engaged in the entire software development cycle for SWCs using C, DOORS and Matlab/Simulink.
-- Experience with Automotive Software process and features: Functional Safety, CyberSecurity, ASPICE.
-- Facilitate risk assessment, plan software activities, create work products, and communication with clients.
-- More skills: Git, Jira, Perforce, IMS.
+- Specialized in AUTOSAR configuration for OTA, CAN, UDS, and LIN using Vector tools.
+- Managed software development process with ASPICE, DOORS, Git, JIRA, and Simulink.
+- Conducted risk assessments, planned software activities, and communicated with clients at Continental in Guadalajara, Mexico.
 
 `October/2017-March/2018`
-__Software Engineer__, GearsTech
+__Software Engineer__, GearsTech Mexico
 
-- Freelancer specializing in the design and development of custom LED driver applications, utilizing ATMega328 and STM32F4, with proficiency in C++, and Qt.
-- Support projects regarding BitCoin manager app, and Game development based on C++/Qt.
-- More skills: GDB, Git, QML, GCC.
+- Designed custom LED driver app using ATMega328 and STM32F4 in C++ and Qt.
+- Supported projects for BitCoin manager app and game development in C++/Qt.
+- Contributed to innovative solutions for GearsTech in Guadalajara Area, Mexico.
 
 `March/2017- October2017`
-__Software Engineer__, KAL
+__Software Engineer__, KAL Mexico
 
 - Develop one project-based on C++ code and NDC protocol by creating Software to remotely reset the Encrypted Pin Pad and command cash dispenser status report.
 - Proficient in the migration plan for C++98 modules to C++11 delivering a document of source code and tool dependency changes.
