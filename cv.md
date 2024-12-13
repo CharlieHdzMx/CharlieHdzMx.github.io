@@ -5,10 +5,10 @@ layout: resume
 
 `July/2021-Current`
 __Software Engineer and Sw Technical Project Lead__, Innolux
-• Managed software development projects as a Technical Project Leader, ensuring client communication and monitoring problem reports.
-• Designed Software Architecture focusing on Functional Safety mechanisms and compliance with external specifications.
-• Developed Autosar projects with configuration using Vector tools and Enterprise architect.
-• Owned the ASPICE Process for Software Detailed Design and Development, presenting for external audits and collaborating with the team.
+- Managed software development projects as a Technical Project Leader, ensuring client communication and monitoring problem reports.
+- Designed Software Architecture focusing on Functional Safety mechanisms and compliance with external specifications.
+- Developed Autosar projects with configuration using Vector tools and Enterprise architect.
+- Owned the ASPICE Process for Software Detailed Design and Development, presenting for external audits and collaborating with the team.
 
 `March/2018-July/2021`
 __Software Engineer__, Continental
