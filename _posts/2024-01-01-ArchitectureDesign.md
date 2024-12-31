@@ -35,6 +35,7 @@ Architecture should **minimize reliance on numerous configuration files and comp
 To fulfill these expectations, architectural principles can be applied, drawing from *SOLID** principles ([Single Responsibility]([https://link-url-here.org](https://charliehdzmx.github.io/blog/Single_Responsability_Design_Principle/)), Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion) along with other established design patterns, architects can develop systems that are flexible, modular, and easier to evolve over time.
 
 ## Layers Definition
+Como un ejemplo
 
 ## Use Case Definition
 
