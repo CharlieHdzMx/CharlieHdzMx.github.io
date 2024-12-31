@@ -27,3 +27,8 @@ Architecture must also be capable of identifying resource limits and the necessa
 
 ## Development
 Architecture should also be defined based on the structure of the software team. For small software teams, where development and deployment can be straightforward, creating an architecture with sophisticated interfaces and dependency boundaries might cause more problems than solutions. However, for large development teams, defining complex system structures to minimize dependencies between developers and reduce conflicts in functional changes becomes a good architectural approach. It's also important to consider whether the software team will grow or shrink over time, and the architecture should be able to adapt to or plan for such changes throughout the project's lifecycle.
+
+## Deployment
+Architecture should minimize reliance on numerous configuration files and complex deployment steps after the build process. The deployment should be as straightforward as possible, with any necessary variations being easy to understand and implement. For instance, if configuration settings are stored in a file, there should be a clear process for inputting these settings, along with a reliable verification mechanism. The inputs and outputs of this process should be intuitive and user-friendly. While deployment variations and methods may be inevitable, the architecture should aim to simplify the software's interactions with these elements. The goal is to reduce dependencies and streamline the deployment process, making it more manageable and less error-prone. This approach ensures that the architecture supports efficient and reliable software deployment, even when accommodating different deployment scenarios or configuration requirements.
+
+
