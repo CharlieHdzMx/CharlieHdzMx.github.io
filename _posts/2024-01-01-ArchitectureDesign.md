@@ -43,6 +43,11 @@ A notable example of this layered approach is the AUTOSAR architecture, which cl
 
 ## Use Case Definition
 
+The definition of use cases is based on **drawing vertical lines across the system architecture**. These vertical lines represent unique use cases, spanning from the top to the bottom of the architecture description. Combined with horizontal layer lines, they help isolate and organize components, making them easier to identify. These vertical lines, often referred to as "stacks," group components based on their functionality within the software system. For example, in Ethernet communication, the Ethernet stack starts with the low-level driver component, followed by the middleware interface for Ethernet, then moves to the service layer to handle request dispatches for Ethernet communication, and finally reaches the application layer use case. The primary purpose of this Ethernet stack is to ensure proper communication via the Ethernet protocol, focusing exclusively on components relevant to this functionality. 
+
+As shown in the image below, vertical lines represent these components (with only one horizontal line connecting to the Network Management component, which is irrelevant in this example). 
+![Ethernet Stack](https://media.licdn.com/dms/image/v2/D5612AQGbYoVrPbkQpw/article-inline_image-shrink_1000_1488/article-inline_image-shrink_1000_1488/0/1691900700375?e=1740009600&v=beta&t=mjthieVT3sbEB6xLsRFR5t5kT1njqTI9dNWTSFybOXk)
+
 ## Software Modes Definition
 
 ## Independent Development
