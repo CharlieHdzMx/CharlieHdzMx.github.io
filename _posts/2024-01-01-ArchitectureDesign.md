@@ -55,7 +55,7 @@ This decoupling depends on factors such as inputs, the environment, the server, 
 # Business Rules as pillar
 Business rules are independent of any GUI, tool, database, or other components represented in the architecture. This is because business rules form the backbone of the software's purpose or intent, while the GUI serves as a means to present that backbone, and the database functions as a tool to store and retrieve data for it. Consequently, a well-designed architecture will always show dependencies leading to the business rules but never from the business rules to other components. For example, the GUI and the database _depend_ on the business rules to function correctly, and without the implementation of these rules, neither the GUI nor the database can operate as intended.
 
-[Business Rules as pillar](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/Architecture01.jpg)
+![Business Rules as pillar](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/Architecture01.jpg)
 
 
 
