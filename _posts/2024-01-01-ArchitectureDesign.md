@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Sw Architecture Design
-excerpt: "Sw Architecture Design"
-modified: 01/01/2025, 9:00:24
+excerpt: Sw Architecture Design
+modified: 1/01/2025, 9:00:24
 tags: [Architecture, C]
 comments: true
 category: blog
