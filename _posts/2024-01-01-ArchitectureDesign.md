@@ -39,6 +39,7 @@ The definition of layers in software architecture is based on **drawing horizont
 
 A notable example of this layered approach is the AUTOSAR architecture, which clearly demonstrates horizontal layers following the pattern described above.
 
+![Autosar Architecture](https://www.embitel.com/wp-content/uploads/1-AUTOSAR-Archtecture.jpg)
 
 ## Use Case Definition
 
