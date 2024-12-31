@@ -35,7 +35,10 @@ Architecture should **minimize reliance on numerous configuration files and comp
 To fulfill these expectations, architectural principles can be applied, drawing from *SOLID** principles ([Single Responsibility](https://link-url-here.org](https://charliehdzmx.github.io/blog/Single_Responsability_Design_Principle), Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion) along with other established design patterns, architects can develop systems that are flexible, modular, and easier to evolve over time.
 
 ## Layers Definition
-Como un ejemplo
+The definition of layers in software architecture is based on **drawing horizontal lines across the system**. The **highest layers are those closest to the most prominent business rules** or use cases identifiable by stakeholders/clients, with the application typically at the top. As you move downwards, there are layers of abstraction based on components with common interface types between horizontal layers. For example, below the application layer, there should be a component layer where interfaces can be defined as services and behave similarly. Intermediate layers can be more concrete abstractions and act as middleware between the service layer and the device abstraction layer. At the l**owest levels are components where interfaces directly interact with low-level devices or hardware**, such as drivers, I/O, communication buses, etc. 
+
+A notable example of this layered approach is the AUTOSAR architecture, which clearly demonstrates horizontal layers following the pattern described above.
+
 
 ## Use Case Definition
 
