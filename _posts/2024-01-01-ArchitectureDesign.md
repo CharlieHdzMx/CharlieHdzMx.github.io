@@ -32,27 +32,27 @@ Architecture should also be defined based on the structure of the software team.
 Architecture should **minimize reliance on numerous configuration files and complex deployment steps after the build process**. The deployment should be as straightforward as possible, with any necessary variations being easy to understand and implement. For instance, if configuration settings are stored in a file, there should be a clear process for inputting these settings, along with a reliable verification mechanism. The inputs and outputs of this process should be intuitive and user-friendly. While deployment variations and methods may be inevitable, the architecture should aim to simplify the software's interactions with these elements. The goal is to reduce dependencies and streamline the deployment process, making it more manageable and less error-prone. This approach ensures that the architecture supports efficient and reliable software deployment, even when accommodating different deployment scenarios or configuration requirements.
 
 # Architecture Principles
-To fulfill these expectations, architectural principles can be applied, drawing from *SOLID** principles ([Single Responsibility](https://link-url-here.org](https://charliehdzmx.github.io/blog/Single_Responsability_Design_Principle), Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion) along with other established design patterns, architects can develop systems that are flexible, modular, and easier to evolve over time.
+To fulfill these expectations, architectural principles can be applied, drawing from *SOLID** principles ([Single Responsibility](https://charliehdzmx.github.io/blog/Single_Responsability_Design_Principle), [Open-Closed](https://charliehdzmx.github.io/blog/Open_Close_Principle/), [Liskov Substitution](https://charliehdzmx.github.io/blog/Liskov_Substitution_Principle/), [Interface Segregation](https://charliehdzmx.github.io/blog/SW_Component_Coupling/), and [Dependency Inversion](https://charliehdzmx.github.io/blog/Dependency_Inversion_Principle/)) along with other established design patterns, architects can develop systems that are flexible, modular, and easier to evolve over time.
 
-## Layers Definition
+## Layers
 The definition of layers in software architecture is based on **drawing horizontal lines across the system**. The **highest layers are those closest to the most prominent business rules** or use cases identifiable by stakeholders/clients, with the application typically at the top. As you move downwards, there are layers of abstraction based on components with common interface types between horizontal layers. For example, below the application layer, there should be a component layer where interfaces can be defined as services and behave similarly. Intermediate layers can be more concrete abstractions and act as middleware between the service layer and the device abstraction layer. At the l**owest levels are components where interfaces directly interact with low-level devices or hardware**, such as drivers, I/O, communication buses, etc. 
 
 A notable example of this layered approach is the AUTOSAR architecture, which clearly demonstrates horizontal layers following the pattern described above.
 
 ![Autosar Architecture](https://www.embitel.com/wp-content/uploads/1-AUTOSAR-Archtecture.jpg)
 
-## Use Case Definition
+## Use Case
 
 The definition of use cases is based on **drawing vertical lines across the system architecture**. These vertical lines represent unique use cases, spanning from the top to the bottom of the architecture description. Combined with horizontal layer lines, they help isolate and organize components, making them easier to identify. These vertical lines, often referred to as "stacks," group components based on their functionality within the software system. For example, in Ethernet communication, the Ethernet stack starts with the low-level driver component, followed by the middleware interface for Ethernet, then moves to the service layer to handle request dispatches for Ethernet communication, and finally reaches the application layer use case. The primary purpose of this Ethernet stack is to ensure proper communication via the Ethernet protocol, focusing exclusively on components relevant to this functionality. 
 
 As shown in the image below, vertical lines represent these components (with only one horizontal line connecting to the Network Management component, which is irrelevant in this example). 
 ![Ethernet Stack](https://media.licdn.com/dms/image/v2/D5612AQGbYoVrPbkQpw/article-inline_image-shrink_1000_1488/article-inline_image-shrink_1000_1488/0/1691900700375?e=1740009600&v=beta&t=mjthieVT3sbEB6xLsRFR5t5kT1njqTI9dNWTSFybOXk)
 
-## Software Modes Definition
+## Software Modes
 
-## Independent Development
+This decoupling depends on factors such as inputs, the environment, the server, or the GUI used for deployment. For instance, the architecture may need to separate servers with higher resource demands and faster performance from those with lower resource requirements. This principle applies to any configuration or paradigm at the operational level. 
 
-## Independent Deployment
+# Decouple
 
 
 
