@@ -82,3 +82,7 @@ Below this level are **Use Cases**, which, while not as abstract as entities, re
 
 # Dependency architecture
 An architecture must identify the components and their types, focusing on ensuring that business rules and use cases remain independent of the UI, database, or any external agency, while also being testable independently of these external components. Thus, the following image will aid in understanding how these dependencies are structured.
+
+![Dependency architecture](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/architecture02.jpg)
+
+Dependency arrows will always point toward higher levels, never the other way around. Entities will never depend on use cases or frameworks to remain functional and testable. This ensures that entities can be tested early in the project and later integrated with any framework or database without being tied to them. Since entities are independent of lower-level components, any changes or bugs in those components will not impact the higher-level entities. Similarly, use cases depend on entities, meaning changes to entities can affect use cases. However, use cases do not depend on gateways or drivers, ensuring that bugs in these lower-level components will not impact the functionality of the use cases.
