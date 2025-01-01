@@ -79,3 +79,6 @@ Service decoupling is the most time-intensive of all boundary strategies but als
 In software, these rules can be represented as objects, where the inputs are the critical business data and the outputs serve as interfaces for lower-level policies. These objects are referred to as **Entities**. Entities represent the highest-level abstraction of critical business rules in software. 
 
 Below this level are **Use Cases**, which, while not as abstract as entities, remain independent of system-specific details to some extent. However, use cases have a closer dependency on how an application manages the execution of these rules. This is because use cases often involve entities constrained by business requirements that the application enforces. Essentially, use cases define how software saves or earns money by leveraging its ability to manage and apply critical business rules effectively.
+
+# Dependency architecture
+An architecture must identify the components and their types, focusing on ensuring that business rules and use cases remain independent of the UI, database, or any external agency, while also being testable independently of these external components. Thus, the following image will aid in understanding how these dependencies are structured.
