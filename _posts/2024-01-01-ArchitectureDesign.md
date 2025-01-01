@@ -57,8 +57,18 @@ Business rules are independent of any GUI, tool, database, or other components r
 
 ![Business Rules as pillar](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/Architecture01.jpg)
 
+# Boundary Strategies
+A boundary strategy can involve **source-level decoupling**, **service decoupling**, or **local processing decoupling**. The choice of strategy depends on the specific use case and the acceptable trade-offs in terms of time and memory consumption.
 
+## Source Level Decoupling
+Within the same processor, task, and address space, source-level decoupling relies on **function calls as boundary interfaces**, which are highly efficient in terms of execution time. These boundary interfaces remain consistent whether used in a simple executable or a deployed component with libraries, as the function call operates the same regardless of where it is allocated in memory—provided it remains within accessible memory boundaries.
+In source-level decoupling, the trade-off lies in the need for careful architectural analysis to prevent unwanted dependencies between interface calls across components. This often involves leveraging component abstractions to invert dependencies, ensuring they do not align with the program's control flow. Achieving this typically requires the use of architectural patterns such as factories and interface-implementation patterns.
 
+## Local Processing Decoupling
+Local processing decoupling relies on the use of independent tasks or processes, each operating in isolation. This independence is achieved by assigning specific memory addresses exclusively to each task, ensuring that the memory is protected and accessible only by the designated task. Boundary interfaces for local processing can include **shared memory, sockets, mailboxes, or message queues**.
+
+## Service Decoupling
+Service decoupling is the most time-intensive of all boundary strategies but also the most robust. It operates over a specific network and relies on boundary interfaces, such as **request-response mechanisms**.
 
 
 
