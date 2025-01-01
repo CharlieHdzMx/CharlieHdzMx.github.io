@@ -70,5 +70,7 @@ Local processing decoupling relies on the use of independent tasks or processes,
 ## Service Decoupling
 Service decoupling is the most time-intensive of all boundary strategies but also the most robust. It operates over a specific network and relies on boundary interfaces, such as **request-response mechanisms**.
 
+## Policies and Level
+**Policies** are rules derived from use cases that help identify their relationships and hierarchical **levels** within the system. The **level** of a policy is determined by its proximity to the system's inputs and outputs. Policies farther from inputs and outputs are associated with more stable components, making changes to them more significant. In contrast, l**ow-level policies**, closer to the inputs and outputs, are more prone to frequent changes but are less critical. **High-level policies** can be viewed as the business rules or core components of the architecture, which should be kept as stable and abstract as possible. Meanwhile, low-level policies require minimal focus and are primarily concerned with handling specific input-output operations.
 
 
