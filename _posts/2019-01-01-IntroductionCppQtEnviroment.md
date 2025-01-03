@@ -27,5 +27,14 @@ As in any project, in Qt it is necessary to have a tool that builds executables 
 
 Qt includes a derivative of make called **qmake**, which is very similar to make but enables the definition of a **project file** (.pro) that is easier to use within the Qt environment and framework.
 
+## Include headers
+Qmake recognizes headers when the project file includes an _INCLUDEPATH += dirName_ directive, allowing new headers or dependencies to be added to the project. Qt, like C++, supports three different ways of including a header in the source code:
+
+1. _#include <iostream>_: This first searches for the header sequentially in the **"include path,"** where the C++ standard implementation is typically located.
+2. _#include "headerName"_: This attempts to find a header with the name headerName in the i**nclude paths and HEADERS specified in the project file**.
+3. _#include "seqPath/headerName"_: This searches first in the specified **seqPath** for a header with the name headerName.
+
+When there is a name conflict with headerName, qmake uses the **first header it finds**. If it cannot locate any headerName, qmake will fail to produce a new executable and will return an **error for the project**.
+
 # Reference
 [1] Ezust, A., & Ezust, P. (2006). An Introduction to Design Patterns in C++ with Qt 4. Prentice Hall. ISBN-10: 0131879057, ISBN-13: 978-0131879058.
