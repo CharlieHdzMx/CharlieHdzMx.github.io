@@ -2,7 +2,7 @@
 layout: post
 title: Introduction Cpp
 excerpt: S introduction cpp
-modified: 1/01/2021, 9:00:24
+modified: 1/01/2019, 9:00:24
 tags: [Cpp]
 comments: true
 category: blog
