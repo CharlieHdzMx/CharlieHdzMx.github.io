@@ -29,6 +29,8 @@ Qt includes a derivative of make called **qmake**, which is very similar to make
 
 https://github.com/CharlieHdzMx/QtProjects/blob/74228842151dd26094f96d52bb760f8c5b265221/FactDialog/mainApp.pro
 
+https://raw.githubusercontent.com/CharlieHdzMx/QtProjects/refs/heads/main/FactDialog/mainApp.pro
+
 The HEADER section specifies whether the project is an APP, LIB, or SUBDIR:
 
 1. For an **APP**, the output is an executable file.
