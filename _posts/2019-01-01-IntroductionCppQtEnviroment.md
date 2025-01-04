@@ -29,6 +29,12 @@ Qt includes a derivative of make called **qmake**, which is very similar to make
 
 https://github.com/CharlieHdzMx/QtProjects/blob/74228842151dd26094f96d52bb760f8c5b265221/FactDialog/mainApp.pro
 
+The HEADER section specifies whether the project is an APP, LIB, or SUBDIR:
+
+1. For an **APP**, the output is an executable file.
+2. For a **LIB**, the output is a library, based on the specified output configuration.
+3. For a **SUBDIR**, it indicates that this is a parent .pro file, which will include sub-project .pro files with their own configurations.
+
 ## Include headers
 Qmake recognizes headers when the project file includes an _INCLUDEPATH += dirName_ directive, allowing new headers or dependencies to be added to the project. Qt, like C++, supports three different ways of including a header in the source code:
 
