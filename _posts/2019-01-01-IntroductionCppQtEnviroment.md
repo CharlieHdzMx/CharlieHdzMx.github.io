@@ -27,9 +27,7 @@ As in any project, in Qt it is necessary to have a tool that builds executables 
 
 Qt includes a derivative of make called **qmake**, which is very similar to make but enables the definition of a **project file** (.pro) that is easier to use within the Qt environment and framework.
 
-https://github.com/CharlieHdzMx/QtProjects/blob/74228842151dd26094f96d52bb760f8c5b265221/FactDialog/mainApp.pro
-
-https://raw.githubusercontent.com/CharlieHdzMx/QtProjects/refs/heads/main/FactDialog/mainApp.pro
+https://github.com/CharlieHdzMx/QtProjects/blob/74228842151dd26094f96d52bb760f8c5b265221/FactDialog/mainApp.pro#L11C1-L21C42
 
 The HEADER section specifies whether the project is an APP, LIB, or SUBDIR:
 
