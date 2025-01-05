@@ -50,5 +50,7 @@ In C++ and Qt, the main function serves as the entry point for an application, w
 1. **argc**: The argument count, which represents the number of arguments passed from the command line.
 2. **argv**: The argument vector, which is an array of strings (char*) containing the actual arguments separated by spaces.
 
+In Qt applications, it is essential to declare a **QCoreApplication** or **QApplication** object as early as possible in the main() function. This is important because it enables the event loop, allowing any events that affect or are of interest to the application to be processed promptly. The QCoreApplication class translates the console argument vector into a QStringList, making it easier to process these arguments using the QString API. In English
+
 # Reference
 [1] Ezust, A., & Ezust, P. (2006). An Introduction to Design Patterns in C++ with Qt 4. Prentice Hall. ISBN-10: 0131879057, ISBN-13: 978-0131879058.
