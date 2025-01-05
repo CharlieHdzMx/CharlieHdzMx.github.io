@@ -44,5 +44,11 @@ Qmake recognizes headers when the project file includes an _INCLUDEPATH += dirNa
 
 When there is a name conflict with headerName, qmake uses the **first header it finds**. If it cannot locate any headerName, qmake will fail to produce a new executable and will return an **error for the project**.
 
+## Main Functon Arguments
+In C++ and Qt, the main function serves as the entry point for an application, whether it is a command-line tool or a graphical application (e.g., a widget-based app). For command-line applications specifically, arguments can be passed to the program when running the executable with additional parameters. The main function in both standard C++ and Qt applications typically defines two parameters:
+
+1. **argc**: The argument count, which represents the number of arguments passed from the command line.
+2. **argv**: The argument vector, which is an array of strings (char*) containing the actual arguments separated by spaces.
+
 # Reference
 [1] Ezust, A., & Ezust, P. (2006). An Introduction to Design Patterns in C++ with Qt 4. Prentice Hall. ISBN-10: 0131879057, ISBN-13: 978-0131879058.
