@@ -56,10 +56,24 @@ An indicator of good package design is when there are more interactions within a
 
 ## Relationships.
 
-En UML hay diferentes tipos de maneras de relacionar dos clases incluyendo:
-1. Composition, Esta es uan relacion estricta que es visualizada cuando un objeto A (arrow origin) compone otro objeto B (fllled diamond) and object A cannot coexist without object B. This in C++, is mostly implemented by having a container of Object A in Object B, and allowing the construction of objects A only managed by object B.
-2. Agregation, This is a relationship less strict than Composition, where is visualized when an object A (arrow origin) is aggregated to object B(emplty diamond) but object A can coexist independently of object B. This in C++, means having a container of Objects A in Object B but not restricting the constructions of objects A.
-3. Association, THis is the most free association where objects know each other for any matter but they do not hold any management or restriction among them.
+In UML, there are different ways to define relationships between two classes, including:
 
-In the diagrams, you can also define restriction on the amount of objects can be located in a relationship, this is called cardinality and if there is a *, then it means that the amount can be "zero or more" objects.
+1. **Composition**: This is a strict relationship where an object A (arrow origin) composes another object B (filled diamond), and object A cannot exist independently of object B. In C++, this is typically implemented by having a container of objects A within object B and ensuring that the creation and management of objects A are exclusively handled by object B.
+2. **Aggregation**: This is a less strict relationship than Composition, where an object A (arrow origin) is aggregated into object B (empty diamond), but object A can exist independently of object B. In C++, this often involves having a container of objects A in object B without restricting the creation or management of objects A.
+3. **Association**: This is the most flexible type of relationship, where objects are aware of each other for specific purposes but do not impose any ownership, management, or restrictions on one another.
+
+In UML diagrams, you can define restrictions on the number of objects that can be in a relationship, which is referred to as **cardinality**. Cardinality specifies the minimum and maximum number of instances involved in the relationship. For example:
+
+1. 0..*: This means "zero or more" objects can be associated.
+2. 1..1: Exactly one object is required.
+3. 1..*: At least one object is required, but there can be many.
+4. m..n: Specifies a range, where at least m and at most n objects can be associated.
+
+If an asterisk (*) is used, it indicates an unlimited number of objects. Cardinality is typically displayed near the ends of the relationship lines in UML diagrams to clarify these constraints visually.
+
+Another property of relationships in UML is navigability. Navigability specifies the direction in which a relationship can be traversed and is represented by visual indicators such as arrows or diamonds. It determines whether one class can "see" or access the other class in the relationship. Navigability can take the following forms:
+
+1. **Unidirectional**: The relationship can be navigated in only one direction, meaning one class knows about the other, but not vice versa.
+2. **Bidirectional**: Both classes are aware of and can navigate to each other.
+3. **Self-directional**: A class has a relationship with itself, allowing navigation within its own instances.
 
