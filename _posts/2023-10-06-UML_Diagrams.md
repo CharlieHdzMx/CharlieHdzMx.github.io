@@ -52,4 +52,14 @@ Package partitions play a key role in organizing systems based on architecture l
 
 An indicator of good package design is when there are more interactions within a package than between external packages. This signifies that the components within a package are well-connected and collaborate effectively, promoting a cohesive and modular design. It reflects a design where the internal cohesion of packages is strong, contributing to a more maintainable and comprehensible system architecture.
 
+# Class Diagrams
+
+## Relationships.
+
+En UML hay diferentes tipos de maneras de relacionar dos clases incluyendo:
+1. Composition, Esta es uan relacion estricta que es visualizada cuando un objeto A (arrow origin) compone otro objeto B (fllled diamond) and object A cannot coexist without object B. This in C++, is mostly implemented by having a container of Object A in Object B, and allowing the construction of objects A only managed by object B.
+2. Agregation, This is a relationship less strict than Composition, where is visualized when an object A (arrow origin) is aggregated to object B(emplty diamond) but object A can coexist independently of object B. This in C++, means having a container of Objects A in Object B but not restricting the constructions of objects A.
+3. Association, THis is the most free association where objects know each other for any matter but they do not hold any management or restriction among them.
+
+In the diagrams, you can also define restriction on the amount of objects can be located in a relationship, this is called cardinality and if there is a *, then it means that the amount can be "zero or more" objects.
 
