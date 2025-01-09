@@ -19,7 +19,13 @@ Sequential containers can be classified as standard and non-standard, with stand
 3. **Deque**: A container similar to a vector but with the ability to efficiently expand at both ends, making it ideal for operations at the front and back of the sequence.
 4. **List**: A doubly linked list that does not store elements contiguously. It allows quick modifications, such as insertions and deletions at any position, but operations like sorting and iteration are more expensive compared to a vector due to its non-sequential memory structure
 
-## 
+## Associative Containers
+Associative containers can be classified as standard and non-standard, with standard containers being the most commonly used. Some notable examples include:
+
+1. **Map**: A collection where the key and value can be different types. Keys must be unique.
+2. **Set**: A collection where the key and value are the same, effectively storing unique elements. Keys must also be unique.
+3. **Multimap**: Similar to a map, but allows multiple entries with the same key.
+4. **Multiset**: Similar to a set, but allows multiple elements with the same value (duplicate keys).
 
 # Iterator
 
