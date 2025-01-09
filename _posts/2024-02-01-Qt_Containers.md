@@ -11,6 +11,8 @@ category: blog
 # Container
 **Containers** in the **STL** are C++ template classes designed to store objects or pointers. These containers are categorized into two main types: **sequential containers** and **associative containers**.
 
+A relationship between containers and objects can be defined as a **managed container** when objects are used as the elements of the container. In this case, when **the container is destroyed, all its elements are also destroyed.** This type of relationship is known as composition. Alternatively, an **associated container** can be identified when, instead of storing objects directly, the container holds pointers to objects. In this scenario, when **the container is destroyed, the objects themselves are not destroyed** because the container only stores references (pointers) to those objects. This type of relationship is referred to as association.
+
 ## Sequential Containers
 Sequential containers can be classified as standard and non-standard, with standard containers being the most commonly used. Some notable examples include:
 
