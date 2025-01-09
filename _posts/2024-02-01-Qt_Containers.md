@@ -27,6 +27,13 @@ Associative containers can be classified as standard and non-standard, with stan
 3. **Multimap**: Similar to a map, but allows multiple entries with the same key.
 4. **Multiset**: Similar to a set, but allows multiple elements with the same value (duplicate keys).
 
+# Qt Containers
+Like some of C++'s non-standard containers, Qt also defines several containers that can be used, such as:
+
+1. **QStringList**: A class derived from QList<QString>, specifically designed for handling lists of strings.
+2. **QHash**: An associative container that uses a hash table to enable fast key lookups.
+3. **QCache**: An associative container optimized for quick access to recently used data while automatically removing items that are no longer frequently accessed.
+
 # Iterator
 
 # Reference
