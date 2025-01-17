@@ -38,8 +38,8 @@ phrase[4:7]
 # Collections
 In Python, collections are containers of references. Unlike C++, these containers can be **heterogeneous**, meaning they can hold references to **different data types**. The most important collections in Python are:
 
-1. **Tuple**: Immutable sequential containers
-2. **List**,
+1. **Tuple**: Immutable sequential containers.
+2. **List**, Mutable sequential containers.
 3. **Dict** (Dictionary),
 4. **Set**,
 5. **Frozenset**,
