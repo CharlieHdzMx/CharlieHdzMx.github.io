@@ -60,7 +60,7 @@ Since lists (and dictionaries) are mutable, any changes made to a variable that 
 To copy a list compeltely, you can use a = b[:].
 
 ## Dict
-A Dict (dictionary) is an associative container that stores data in **key:value** pairs, where the key must be of an immutable type, such as strings, numbers, or even tuples. Lists cannot be used as keys because they are mutable. Below are some common uses of dictionaries.
+A Dict (dictionary) is an associative container that stores data in **key:value** pairs, where the key must be of an immutable type, such as strings, numbers, or even tuples and frozensets. Lists and sets cannot be used as keys because they are mutable. Below are some common uses of dictionaries.
 
 ````python
 animals = { "Deer": 500, "Lion":10, "SeaLion":100}
