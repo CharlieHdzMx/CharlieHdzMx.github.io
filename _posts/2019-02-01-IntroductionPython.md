@@ -72,3 +72,5 @@ animals.pop("Lion") #Remove returning the value of the "Lion" key.
 
 points3d = {(3,4,5):"Blue" , (4,5,6):"Green"}
 ````
+
+## Set and Frozenset
