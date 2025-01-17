@@ -46,3 +46,12 @@ In Python, collections are containers of references. Unlike C++, these container
 
 ## Tuples
 To create a tuple, you can use _tuple = ()_. If you want to initialize a tuple with elements, you can include them separated by commas inside the parentheses, such as _tuple = (1, 2, 3)_. Tuples can be sliced in the same way as strings. Additionally, individual elements can be accessed using index operators.
+
+## List
+Similar to tuples, lists are sequential containers, but unlike tuples, they are mutable. This means that lists can be modified by adding, removing, or changing their elements. Lists are created using square brackets [] instead of parentheses (), which is the main difference in their declaration compared to tuples. Lists provide several useful methods for manipulation:
+
+The insert(x, y) function allows you to insert a value y at a specific index x.
+To remove an element by its index, you can use the del listName[x] statement, where x is the index of the element to be removed.
+The remove("value") method can also be used to delete an element by specifying its value.
+
+Since lists (and dictionaries) are mutable, any changes made to a variable that references the same object will affect all related variables. For example, if x = y and you modify x, the changes will also reflect in y. This behavior occurs because both variables point to the same underlying object in memory.
