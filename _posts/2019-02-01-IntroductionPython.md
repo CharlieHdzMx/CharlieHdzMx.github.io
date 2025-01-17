@@ -35,4 +35,14 @@ phrase = "The red balloon"
 phrase[4:7]
 'red'
 ````
+# Collections
+In Python, collections are containers of references. Unlike C++, these containers can be **heterogeneous**, meaning they can hold references to **different data types**. The most important collections in Python are:
 
+1. **Tuple**: Immutable sequential containers
+2. **List**,
+3. **Dict** (Dictionary),
+4. **Set**,
+5. **Frozenset**,
+
+## Tuples
+To create a tuple, you can use _tuple = ()_. If you want to initialize a tuple with elements, you can include them separated by commas inside the parentheses, such as _tuple = (1, 2, 3)_. Tuples can be sliced in the same way as strings. Additionally, individual elements can be accessed using index operators.
