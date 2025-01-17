@@ -52,6 +52,23 @@ Similar to tuples, lists are sequential containers, but unlike tuples, they are 
 
 The **insert(x, y) **function allows you to insert a value y at a specific index x.
 To remove an element by its index, you can use the **del listName[x]** statement, where x is the index of the element to be removed.
+
 The remove("value") method can also be used to delete an element by specifying its value.
 
 Since lists (and dictionaries) are mutable, any changes made to a variable that references the same object will affect all related variables. For example, if x = y and you modify x, the changes will also reflect in y. This behavior occurs because both variables point to the same underlying object in memory.
+
+To copy a list compeltely, you can use a = b[:].
+
+## Dict
+A Dict (dictionary) is an associative container that stores data in **key:value** pairs, where the key must be of an immutable type, such as strings, numbers, or even tuples. Lists cannot be used as keys because they are mutable. Below are some common uses of dictionaries.
+
+````
+animals = { "Deer": 500, "Lion":10, "SeaLion":100}
+animals["Deer"]  #Print 500
+animals["Deer"] = 50 #Deer is 50 now
+
+del animas["Deer"] # Remove element of "Deer" key.
+animals.pop("Lion") #Remove returning the value of the "Lion" key.
+
+points3d = {(3,4,5):"Blue" , (4,5,6):"Green"}
+````
