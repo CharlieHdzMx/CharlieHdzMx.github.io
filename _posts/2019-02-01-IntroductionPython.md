@@ -12,7 +12,7 @@ category: blog
 
 Python provides two ways to compare objects: by identity and by value. Value is compared using operators such as == and <, while identity refers to the memory addresses of the objects, which can be accessed using the id() function. Additionally, objects can be compared with the unique object None to check for their existence. Python does not allow comparison between objects of different types, raising an exception in such cases. Variable names must begin with a letter and are case-sensitive. By default, numbers and strings are immutable. This means that when an assignment is made based on another object, the referenced object does not change. As a result, changes by reference are not allowed by default.
 
-````
+````python
 x = 5
 y = x
 x,y
@@ -25,12 +25,12 @@ x,y
 
 In Python, similar to C and C++, the %i placeholder can be replaced by an integer within a string when handling arguments. This also applies to other supported types: %s for strings and %f for floating-point numbers.
 
-````
+````python
 "The %i %s cost %f euros" % (iAmounf, product, 17.49)
 ````
 Python can handle ASCII characters using a 7-bit representation while also supporting Unicode, which allows for a broader range of byte usage. Additionally, it supports the use of **QString** when working with the **PyQt** framework. String slicing properties in Python are defined as **[x:y]**, where x specifies the starting position of the substring from the left, and y specifies the endpoint from the left. If the number is negative it starts from the right. For example, the operator [-3:] can be used to create a subset starting from the third character from the end of the string.
 
-````
+````python
 phrase = "The red balloon"
 phrase[4:7]
 'red'
@@ -62,7 +62,7 @@ To copy a list compeltely, you can use a = b[:].
 ## Dict
 A Dict (dictionary) is an associative container that stores data in **key:value** pairs, where the key must be of an immutable type, such as strings, numbers, or even tuples. Lists cannot be used as keys because they are mutable. Below are some common uses of dictionaries.
 
-````
+````python
 animals = { "Deer": 500, "Lion":10, "SeaLion":100}
 animals["Deer"]  #Print 500
 animals["Deer"] = 50 #Deer is 50 now
