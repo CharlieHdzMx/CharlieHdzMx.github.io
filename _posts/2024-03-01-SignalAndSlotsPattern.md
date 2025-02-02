@@ -16,9 +16,12 @@ It resembles a function but is not invoked like a regular function. Instead, it 
 
 A **slot** is a `void` function that can be called normally but can also be invoked indirectly by the *QMetaObject* system. A signal from one class can be connected to one or more slots of another class. This requires that the objects exist at the time of the connection (and during its use). Additionally, the parameter lists must match between the signal and the slot; if they do not match, the signal and slot cannot be connected.
 
-Hay una funcuon especifica donde se puede hacer la conexion de una señal y un slot especifico
+There is a specific function that allows establishing the connection between a signal and a particular slot, as shown in the following example:
 
-bool QObject::**connect**(senderQObjectPtr, SIGNAL(signalName(argList)), receiverQObjectPtr, SLOT(slotName(argList)), optConnectionType);
+_bool QObject::**connect**(senderQObjectPtr, SIGNAL(signalName(argList)), receiverQObjectPtr, SLOT(slotName(argList)), optConnectionType);_
 
+Any **QObject** with a signal can emit it. Each time the signal is emitted, the connected slots are automatically invoked. The function parameters serve as a way to pass information from the signal to the slots. The _optionalConnectionType_ parameter enables you to specify whether the slot calls should be synchronous (blocking) or asynchronous (queued). 
 
+If necessary, a slot can know which signal was emitted based on the _sender()_ function.
 
+Notes: Any QObject must be created on the heap and not defined as static, as these objects may depend on a QApplication whose lifetime can extend beyond the scope of the main() function, where stack objects might be created.
