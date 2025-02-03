@@ -27,4 +27,9 @@ If necessary, a slot can know which signal was emitted based on the _sender()_ f
 # QObject Lifecycle
 Any **QObject** must be created on the heap and not defined as static, as these objects may depend on a QApplication whose lifetime can extend beyond the scope of the main() function, where stack objects might be created.
 
+# QWidget
+A QWidget es un QObject que puede ser representado visualmente. Para ello un QWidget hereda pulbicamente del QObject y tambien de una clase llamada QPaintDevice. QPaintDevice es cualquier objeto que se puede pintar en el screen.
 
+Si un QWidget tiene un parent QWidget, las coordenadas seran dentro del QWidget parent indicando que en casos normales siempre estara dentro del QWidget parent. Como un QWidget es un QObject tambien tendra eventos y signals and slots.
+
+A QWidget is a QObject that can be visually represented. To achieve this, a QWidget publicly inherits from QObject and also from a class called QPaintDevice. QPaintDevice refers to any object that can be painted on the screen. If a QWidget has a parent QWidget, its coordinates will be defined within the coordinate system of the parent QWidget, meaning that under normal circumstances, it will always be contained within the parent. Additionally, since a QWidget is also a QObject, it will have access to events and the signals and slots mechanism.
