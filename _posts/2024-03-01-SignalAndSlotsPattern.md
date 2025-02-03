@@ -24,4 +24,7 @@ Any **QObject** with a signal can emit it. Each time the signal is emitted, the 
 
 If necessary, a slot can know which signal was emitted based on the _sender()_ function.
 
-Notes: Any QObject must be created on the heap and not defined as static, as these objects may depend on a QApplication whose lifetime can extend beyond the scope of the main() function, where stack objects might be created.
+# QObject Lifecycle
+Any **QObject** must be created on the heap and not defined as static, as these objects may depend on a QApplication whose lifetime can extend beyond the scope of the main() function, where stack objects might be created.
+
+
