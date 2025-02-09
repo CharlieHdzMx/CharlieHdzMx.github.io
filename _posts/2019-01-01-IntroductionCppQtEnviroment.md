@@ -50,7 +50,69 @@ In C++ and Qt, the main function serves as the entry point for an application, w
 1. **argc**: The argument count, which represents the number of arguments passed from the command line.
 2. **argv**: The argument vector, which is an array of strings (char*) containing the actual arguments separated by spaces.
 
-In Qt applications, it is essential to declare a **QCoreApplication** or **QApplication** object as early as possible in the main() function. This is important because it enables the event loop, allowing any events that affect or are of interest to the application to be processed promptly. The QCoreApplication class translates the console argument vector into a QStringList, making it easier to process these arguments using the QString API. In English
+In Qt applications, it is essential to declare a **QCoreApplication** or **QApplication** object as early as possible in the main() function. This is important because it enables the event loop, allowing any events that affect or are of interest to the application to be processed promptly. The QCoreApplication class translates the console argument vector into a QStringList, making it easier to process these arguments using the QString API. In English.
+
+# Compiler and Linker
+The task of translating high-level code into machine language is performed by the **compiler**. A **code library** consists of precompiled code that is ready to be linked with other code for execution, without requiring direct access to the source code. When you reuse code from a library, the **linker** is responsible for appropriately connecting the base code with all required libraries, thereby creating an executable tailored to a specific configuration. The resulting executable dynamically locates the libraries at runtime without embedding them directly into the executable, allowing the executable to remain small.
+
+Interms of software there are a few reusable componetns such as:
+**Compiled Object Module (.o or .obj)**: Each .cpp file is compiled into a binary object module as an intermediate step in building an executable or library.
+Library (.lib or .dll): 
+
+**Static or dynamic libraries** are indexed collections of linked object files. These libraries do not include a main() function as the program's execution root.
+
+**Development Package** (.lib + headers): A library bundled with its header files.
+
+To improve compilation times and enhance module reusability, it is crucial to minimize dependencies between classes and/or libraries.
+
+# Design Patterns
+Design patterns are categorized into three main types:
+
+**Creational**: Focuses on organizing code that handles object creation.
+**Structural**: Specifies how to organize objects and connect them appropriately.
+**Behavioral**: Defines how to organize code for managing behavior.
+
+## Antipatterns
+Antipatterns are inefficient or counterproductive programming practices such as
+
+### Software Design Antipatterns
+
+**Input Kludge:** Failing to specify and implement handling for invalid input values.
+**Interface Bloat:** Designing an interface so powerful and complex that it becomes difficult to reuse or implement.
+**Race Hazard:** Failing to account for the consequences of concurrently triggered events occurring in different orders.
+
+### Object-Oriented Antipatterns
+
+**Circular Dependency:** Introducing unnecessary mutual dependencies between objects or software modules.
+**God Object:** An object that has too many responsibilities or contains excessive information.
+
+### Programming Antipatterns
+
+**Hard Coding:** Embedding static implementation assumptions in the system.
+**Magic Numbers:** Including unexplained numerical constants in the code.
+**Magic Strings:** Using unexplained string literals directly in the code.
+
+### Methodological Antipatterns
+**Copy-and-Paste Programming:** Copying and pasting code without reviewing edge cases or attempting to create more generic solutions.
+**Reinventing the Square Wheel: ** Failing to adopt an existing, adequate solution in favor of a custom solution that performs worse than the established one.
+
+# Composite Pattern - QObject
+**QObject** is the base class for most Qt classes and implements the **Composite Pattern**, while also using signals and slots as part of the _Observer Pattern_. The Composite Pattern involves creating complex components through a tree-like hierarchy structure of simpler components, ensuring that clients cannot distinguish between complex and simple components.
+
+There is a difference of what is a compose of different objects and what are the elements of a composition. The definitons are:
+**Composite Object:** An object that contains child objects.
+**Component Object:** An object that has a parent object.
+
+QObject serves as both a composite and a component because it can reference another QObject as its parent. The highest level of composition in QObjects represents the root, while derived objects act as leaves. A QObject has a method called _setParent()_, which allows associating it with another QObject as its parent. Additionally, it provides recursive functions like _findChildren()_, which returns a QList of pointers to all its child objects. QObjects without parents are placed on the stack, whereas QObjects with parents are placed on the heap.
+
+# Observer Pattern and QApplication
+A **QApplication** does not follow a purely sequential execution model but is instead **event-driven**. Events are QObjects that communicate with each other through an intermediary object. In GUI applications, when an object changes state, it often needs to quickly communicate this change to update data states and reflect current information in real-time. Observers are objects listening for changes in an object's state; these changes are referred to as state-change events. Enabling this listening mechanism is known as the Observer Pattern or Publish-Subscriber Pattern. Key characteristics of this pattern include:
+
+1. Decoupling dependent classes (observers) from subject classes.
+2. Supporting broadcast communication (one-to-many communication).
+3. Defining how subjects send information to observers within their base class implementation.
+
+The base class **QEvent** encapsulates all events between QObjects, serving as a foundation for various event types such as QActionEvent, QFileOpenEvent, QInputEvent, and QMouseEvent. Each event type communicates specific occurrences—for instance, QMouseEvent handles drag actions, key presses, mouse movements, etc. The execution of a QApplication, or any event-driven application, relies on an event loop—a function that dispatches, queues, and prioritizes events. This loop runs until program termination, iteratively checking conditions for triggering event-based functions according to priority. An extension of this event loop mechanism is Qt's Signals and Slots system, where signals represent events and slots define responses to those events.
 
 # Reference
 [1] Ezust, A., & Ezust, P. (2006). An Introduction to Design Patterns in C++ with Qt 4. Prentice Hall. ISBN-10: 0131879057, ISBN-13: 978-0131879058.
