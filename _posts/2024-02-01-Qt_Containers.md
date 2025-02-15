@@ -17,7 +17,13 @@ The key to the Composite Pattern is having an **abstract class that represents a
 
 In this case, a class called _Figure_ would be defined as an abstraction for all shapes. This Figure class would then be used as the element of any container in the system, but specifically as a pointer (or reference). Using pointers ensures that the abstraction retains information about the specific type of Figure at runtime. If regular objects were used instead of pointers, there could be a loss of data or information about the original shapes.
 
-[https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/blob/9a48496e07f5e07487df1c6f39afa7714b6fb808/images/CompositePattern/CompositePattern1.png](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/CompositePattern1.png)
+[https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/blob/9a48496e07f5e07487df1c6f39afa7714b6fb808/images/CompositePattern/CompositePattern1.png](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/CompositePattern1.png) [2]
+
+Clients use the **Component** class as an interface to interact with pointers within the **Composite** structure. If the recipient is a **Leaf**, the request is handled directly. Otherwise, the request is forwarded to its child components, potentially performing additional operations before and after returning the response to the client.
+
+In this sense, the client cannot distinguish between a primitive object and a composite object, making the interface generic and adhering to the L**iskov Substitution Principle** (part of SOLID), which states that types should be interchangeable without affecting functionality. This simplifies client code, as there is no need for distinct logic for each type of class—everything can be managed by referencing a single class.
+
+Additionally, new objects that comply with the Composite requirements can be added seamlessly. Since it is abstract, there are functions that must be implemented. For example, draw() must be called for every type within Figure, and there is no way to bypass this requirement.
 
 ## QObject
 **QObject** is the base class for most Qt classes and implements the **Composite Pattern**, while also using signals and slots as part of the _Observer Pattern_. The Composite Pattern involves creating complex components through a tree-like hierarchy structure of simpler components, ensuring that clients cannot distinguish between complex and simple components.
@@ -60,3 +66,5 @@ Like some of C++'s non-standard containers, Qt also defines several containers t
 
 # Reference
 [1] Ezust, A., & Ezust, P. (2006). An Introduction to Design Patterns in C++ with Qt 4. Prentice Hall. ISBN-10: 0131879057, ISBN-13: 978-0131879058.
+
+[2] Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). Design patterns: Elements of reusable object-oriented software. Addison-Wesley.
