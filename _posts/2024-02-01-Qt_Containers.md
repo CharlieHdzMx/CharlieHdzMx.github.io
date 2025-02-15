@@ -8,6 +8,18 @@ tags:
 comments: true
 category: blog
 ---
+# Composite Pattern 
+Composicion 
+
+## QObject
+**QObject** is the base class for most Qt classes and implements the **Composite Pattern**, while also using signals and slots as part of the _Observer Pattern_. The Composite Pattern involves creating complex components through a tree-like hierarchy structure of simpler components, ensuring that clients cannot distinguish between complex and simple components.
+
+There is a difference of what is a compose of different objects and what are the elements of a composition. The definitons are:
+**Composite Object:** An object that contains child objects.
+**Component Object:** An object that has a parent object.
+
+QObject serves as both a composite and a component because it can reference another QObject as its parent. The highest level of composition in QObjects represents the root, while derived objects act as leaves. A QObject has a method called _setParent()_, which allows associating it with another QObject as its parent. Additionally, it provides recursive functions like _findChildren()_, which returns a QList of pointers to all its child objects. QObjects without parents are placed on the stack, whereas QObjects with parents are placed on the heap.
+
 # Container
 **Containers** in the **STL** are C++ template classes designed to store objects or pointers. These containers are categorized into two main types: **sequential containers** and **associative containers**.
 
