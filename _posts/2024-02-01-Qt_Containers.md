@@ -17,13 +17,19 @@ The key to the Composite Pattern is having an **abstract class that represents a
 
 In this case, a class called _Figure_ would be defined as an abstraction for all shapes. This Figure class would then be used as the element of any container in the system, but specifically as a pointer (or reference). Using pointers ensures that the abstraction retains information about the specific type of Figure at runtime. If regular objects were used instead of pointers, there could be a loss of data or information about the original shapes.
 
-[https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/blob/9a48496e07f5e07487df1c6f39afa7714b6fb808/images/CompositePattern/CompositePattern1.png](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/CompositePattern1.png) [2]
+[https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/blob/9a48496e07f5e07487df1c6f39afa7714b6fb808/images/CompositePattern/CompositePattern1.png](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/CompositePattern1.png) 
+[2]
 
 Clients use the **Component** class as an interface to interact with pointers within the **Composite** structure. If the recipient is a **Leaf**, the request is handled directly. Otherwise, the request is forwarded to its child components, potentially performing additional operations before and after returning the response to the client.
 
 In this sense, the client cannot distinguish between a primitive object and a composite object, making the interface generic and adhering to the L**iskov Substitution Principle** (part of SOLID), which states that types should be interchangeable without affecting functionality. This simplifies client code, as there is no need for distinct logic for each type of class—everything can be managed by referencing a single class.
 
 Additionally, new objects that comply with the Composite requirements can be added seamlessly. Since it is abstract, there are functions that must be implemented. For example, draw() must be called for every type within Figure, and there is no way to bypass this requirement.
+
+En la implementacion es necesario tener en cuenta los siguientes propiedades:
+1. Referencia explicita to parent(). Se debe de tener referencias explicitas del parent desde las clases child de manera recursiva. Esto normalmente sucede con el hecho de tner una funcion para poder referenciar un puntero del parent. Esto simplifica el flujo de depencias de abajo de las clases Leaf a los mas altos hasta el Component. Normalmente esa funcion de referencia del parent() esta en el Component class. Es importante tambien mencionar que la asociacion del parent debe de ser solamente en la creacion y destruccion del child especifico, ya que de otra manera se puede arruinar las referencias de herencias complejas durante runtime.
+2. Maximizar las interfaces de las clases. Para hacer que los clientes sean no concientes de los tipos que se estan usando, se trata de definir la mayor cantidad de interfaces desde la clase asbtracta de Composite que que los Leaf tengan que implementar. Aveces es contraproducente el tener que definir tantas operaciones para los Leaf asi que se tiene que tener cuidado con esta sugerencia.
+3. 
 
 ## QObject
 **QObject** is the base class for most Qt classes and implements the **Composite Pattern**, while also using signals and slots as part of the _Observer Pattern_. The Composite Pattern involves creating complex components through a tree-like hierarchy structure of simpler components, ensuring that clients cannot distinguish between complex and simple components.
