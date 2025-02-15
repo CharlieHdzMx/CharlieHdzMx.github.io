@@ -17,7 +17,7 @@ The key to the Composite Pattern is having an **abstract class that represents a
 
 In this case, a class called _Figure_ would be defined as an abstraction for all shapes. This Figure class would then be used as the element of any container in the system, but specifically as a pointer (or reference). Using pointers ensures that the abstraction retains information about the specific type of Figure at runtime. If regular objects were used instead of pointers, there could be a loss of data or information about the original shapes.
 
-https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/blob/9a48496e07f5e07487df1c6f39afa7714b6fb808/images/CompositePattern/CompositePattern1.png
+[https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/blob/9a48496e07f5e07487df1c6f39afa7714b6fb808/images/CompositePattern/CompositePattern1.png](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/CompositePattern1.png)
 
 ## QObject
 **QObject** is the base class for most Qt classes and implements the **Composite Pattern**, while also using signals and slots as part of the _Observer Pattern_. The Composite Pattern involves creating complex components through a tree-like hierarchy structure of simpler components, ensuring that clients cannot distinguish between complex and simple components.
