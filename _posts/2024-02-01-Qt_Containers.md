@@ -9,7 +9,13 @@ comments: true
 category: blog
 ---
 # Composite Pattern 
-Composicion 
+Composition allows clients to treat **individual objects and compositions of objects uniformly**.
+
+The **Composite Pattern** demonstrates how to use recursive composition to prevent clients from having to handle objects differently based on their primitive types or requiring different ways to contain those objects.
+
+The key to the Composite Pattern is having an **abstract class that represents all primitive objects and their containers**. This abstract class also declares the operations that all composite objects will use. For example, in a GUI with different shapes, a function like _draw()_ would be implemented uniformly for all shapes, such as _Circle_, _Rectangle_, or _Triangle_.
+
+In this case, a class called _Figure_ would be defined as an abstraction for all shapes. This Figure class would then be used as the element of any container in the system, but specifically as a pointer (or reference). Using pointers ensures that the abstraction retains information about the specific type of Figure at runtime. If regular objects were used instead of pointers, there could be a loss of data or information about the original shapes.
 
 ## QObject
 **QObject** is the base class for most Qt classes and implements the **Composite Pattern**, while also using signals and slots as part of the _Observer Pattern_. The Composite Pattern involves creating complex components through a tree-like hierarchy structure of simpler components, ensuring that clients cannot distinguish between complex and simple components.
