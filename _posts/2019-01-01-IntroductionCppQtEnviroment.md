@@ -96,16 +96,8 @@ Antipatterns are inefficient or counterproductive programming practices such as
 **Copy-and-Paste Programming:** Copying and pasting code without reviewing edge cases or attempting to create more generic solutions.
 **Reinventing the Square Wheel: ** Failing to adopt an existing, adequate solution in favor of a custom solution that performs worse than the established one.
 
-# Composite Pattern - QObject
-**QObject** is the base class for most Qt classes and implements the **Composite Pattern**, while also using signals and slots as part of the _Observer Pattern_. The Composite Pattern involves creating complex components through a tree-like hierarchy structure of simpler components, ensuring that clients cannot distinguish between complex and simple components.
-
-There is a difference of what is a compose of different objects and what are the elements of a composition. The definitons are:
-**Composite Object:** An object that contains child objects.
-**Component Object:** An object that has a parent object.
-
-QObject serves as both a composite and a component because it can reference another QObject as its parent. The highest level of composition in QObjects represents the root, while derived objects act as leaves. A QObject has a method called _setParent()_, which allows associating it with another QObject as its parent. Additionally, it provides recursive functions like _findChildren()_, which returns a QList of pointers to all its child objects. QObjects without parents are placed on the stack, whereas QObjects with parents are placed on the heap.
-
-# Observer Pattern and QApplication
+# Observer Pattern
+## QApplication
 A **QApplication** does not follow a purely sequential execution model but is instead **event-driven**. Events are QObjects that communicate with each other through an intermediary object. In GUI applications, when an object changes state, it often needs to quickly communicate this change to update data states and reflect current information in real-time. Observers are objects listening for changes in an object's state; these changes are referred to as state-change events. Enabling this listening mechanism is known as the Observer Pattern or Publish-Subscriber Pattern. Key characteristics of this pattern include:
 
 1. Decoupling dependent classes (observers) from subject classes.
