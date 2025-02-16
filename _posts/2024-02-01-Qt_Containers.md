@@ -17,8 +17,7 @@ The key to the Composite Pattern is having an **abstract class that represents a
 
 In this case, a class called _Figure_ would be defined as an abstraction for all shapes. This Figure class would then be used as the element of any container in the system, but specifically as a pointer (or reference). Using pointers ensures that the abstraction retains information about the specific type of Figure at runtime. If regular objects were used instead of pointers, there could be a loss of data or information about the original shapes.
 
-[https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/blob/9a48496e07f5e07487df1c6f39afa7714b6fb808/images/CompositePattern/CompositePattern1.png](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/CompositePattern1.png) 
-[2]
+![https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/blob/9a48496e07f5e07487df1c6f39afa7714b6fb808/images/CompositePattern/CompositePattern1.png](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/CompositePattern1.png) 
 
 Clients use the **Component** class as an interface to interact with pointers within the **Composite** structure. If the recipient is a **Leaf**, the request is handled directly. Otherwise, the request is forwarded to its child components, potentially performing additional operations before and after returning the response to the client.
 
@@ -30,6 +29,8 @@ In the implementation, it is essential to consider the following properties:
 1. **Explicit Reference to parent()**: Child classes must have explicit references to their parent in a recursive manner. This is typically achieved by providing a function that allows referencing a pointer to the parent. This simplifies the dependency flow from the Leaf classes at the bottom of the hierarchy to the higher levels, up to the Component. Usually, this _parent()_ reference function is defined in the Component class. It is also important to note that the association with the parent should only occur during the creation and destruction of a specific child. Otherwise, complex inheritance references can break during runtime.
 2. **Maximizing Class Interfaces**: To ensure clients remain unaware of the specific types being used, it is recommended to define as many interfaces as possible in the abstract Composite class, which must then be implemented by its Leaf subclasses. However, care must be taken with this approach, as defining too many operations for the Leaf classes can sometimes become counterproductive.
 3. **Deletion of Child Objects**: Removing child objects should typically be handled by the Composite, as it owns its composition and is responsible for managing its children.
+
+The Composite Pattern is commonly used in Model-View-Controller (MVC) architectures, where the View often encompasses both the Component and the Composite.
 
 ## QObject
 **QObject** is the base class for most Qt classes and implements the **Composite Pattern**, while also using signals and slots as part of the _Observer Pattern_. The Composite Pattern involves creating complex components through a tree-like hierarchy structure of simpler components, ensuring that clients cannot distinguish between complex and simple components.
