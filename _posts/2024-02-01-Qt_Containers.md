@@ -75,12 +75,15 @@ The **Iterator** Pattern provides a way to access the elements of an aggregate o
 The core idea of this design pattern is to delegate the responsibility of accessing and traversing the elements of a list not to the list itself, but to an independent iterator object. The iterator defines an interface for accessing the elements of the list and is responsible for keeping track of the current element it is pointing to, as well as which elements have already been visited.
 
 ![](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/Iterator1.png)
+[2]
 
 A key rule is that an iterator should not exist without being assigned a list to traverse, as it may contain invalid data or null pointers, which would serve no purpose.
 
 The idea of separating the iterator from its list is primarily to decouple the iteration functionality from the list's interface. Additionally, it allows for** flexibility in creating different types of iterator**s with varying policies. For example, an iterator could be designed to traverse only elements that are read-only.
 
 The purpose of applying the Iterator Pattern is to enable access to the contents of a container without exposing its internal representation. It also allows for defining uniform interfaces to traverse different types of associative containers, a concept referred to as **polymorphic iteration**.
+
+![](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/Iterator2.png)
 
 # Reference
 [1] Ezust, A., & Ezust, P. (2006). An Introduction to Design Patterns in C++ with Qt 4. Prentice Hall. ISBN-10: 0131879057, ISBN-13: 978-0131879058.
