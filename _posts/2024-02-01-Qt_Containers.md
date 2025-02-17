@@ -70,6 +70,11 @@ Like some of C++'s non-standard containers, Qt also defines several containers t
 3. **QCache**: An associative container optimized for quick access to recently used data while automatically removing items that are no longer frequently accessed.
 
 # Iterator
+El iterator permite una manera de acceder  los elementos   de un objto agr3egado  de manera secuencial sin necesidad de mowtrar sus repr4ewsentaciones internas.
+
+La idea de ewst3 dewsign patt3ern ews el de pasar toda la rewsponwsabilidad de acceso y moverse dentro de la lista no a ninguna interface de la lista, peero mas bien a n objeto iterator independiente de la lista. El iterator define una interface para poder acceder a los elementos de la lista  y esw rewsponwsable de mantener control de cual es el objeto actual el que esta apuntando y cuales ya ha visitado.
+
+
 
 # Reference
 [1] Ezust, A., & Ezust, P. (2006). An Introduction to Design Patterns in C++ with Qt 4. Prentice Hall. ISBN-10: 0131879057, ISBN-13: 978-0131879058.
