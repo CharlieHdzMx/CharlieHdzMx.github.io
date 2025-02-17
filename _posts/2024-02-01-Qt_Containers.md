@@ -76,6 +76,12 @@ The core idea of this design pattern is to delegate the responsibility of access
 
 ![](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/Iterator1.png)
 
+A key rule is that an iterator should not exist without being assigned a list to traverse, as it may contain invalid data or null pointers, which would serve no purpose.
+
+The idea of separating the iterator from its list is primarily to decouple the iteration functionality from the list's interface. Additionally, it allows for** flexibility in creating different types of iterator**s with varying policies. For example, an iterator could be designed to traverse only elements that are read-only.
+
+The purpose of applying the Iterator Pattern is to enable access to the contents of a container without exposing its internal representation. It also allows for defining uniform interfaces to traverse different types of associative containers, a concept referred to as **polymorphic iteration**.
+
 # Reference
 [1] Ezust, A., & Ezust, P. (2006). An Introduction to Design Patterns in C++ with Qt 4. Prentice Hall. ISBN-10: 0131879057, ISBN-13: 978-0131879058.
 
