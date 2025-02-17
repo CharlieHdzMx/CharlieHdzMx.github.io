@@ -60,7 +60,9 @@ In UML, there are different ways to define relationships between two classes, in
 
 1. **Composition**: This is a strict relationship where an object A (arrow origin) composes another object B (filled diamond), and object A cannot exist independently of object B. In C++, this is typically implemented by having a container of objects A within object B and ensuring that the creation and management of objects A are exclusively handled by object B.
 2. **Aggregation**: This is a less strict relationship than Composition, where an object A (arrow origin) is aggregated into object B (empty diamond), but object A can exist independently of object B. In C++, this often involves having a container of objects A in object B without restricting the creation or management of objects A.
-3. **Association**: This is the most flexible type of relationship, where objects are aware of each other for specific purposes but do not impose any ownership, management, or restrictions on one another.
+3. **Association**: This is the most flexible type of relationship, where objects are aware of each other for specific purposes but do not impose any ownership, management, or restrictions on one another. When the line between two classes does not include an arrow, it indicates that both classes have mutual access to each other's elements. However, if the line includes an arrow pointing to class B, it means that class B does not have access to the elements of class A, while class A can access the elements of class B.
+
+![Figure](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/UML_Images/Direction.png)
 
 In UML diagrams, you can define restrictions on the number of objects that can be in a relationship, which is referred to as **cardinality**. Cardinality specifies the minimum and maximum number of instances involved in the relationship. For example:
 
