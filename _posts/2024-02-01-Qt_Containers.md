@@ -41,12 +41,12 @@ There is a difference of what is a compose of different objects and what are the
 
 QObject serves as both a composite and a component because it can reference another QObject as its parent. The highest level of composition in QObjects represents the root, while derived objects act as leaves. A QObject has a method called _setParent()_, which allows associating it with another QObject as its parent. Additionally, it provides recursive functions like _findChildren()_, which returns a QList of pointers to all its child objects. QObjects without parents are placed on the stack, whereas QObjects with parents are placed on the heap.
 
-# Container
+## Container
 **Containers** in the **STL** are C++ template classes designed to store objects or pointers. These containers are categorized into two main types: **sequential containers** and **associative containers**.
 
 A relationship between containers and objects can be defined as a **managed container** when objects are used as the elements of the container. In this case, when **the container is destroyed, all its elements are also destroyed.** This type of relationship is known as composition. Alternatively, an **associated container** can be identified when, instead of storing objects directly, the container holds pointers to objects. In this scenario, when **the container is destroyed, the objects themselves are not destroyed** because the container only stores references (pointers) to those objects. This type of relationship is referred to as association.
 
-## Sequential Containers
+### Sequential Containers
 Sequential containers can be classified as standard and non-standard, with standard containers being the most commonly used. Some notable examples include:
 
 1. **Vector**: A sequential memory container that is typically defined with an initial size. While it can be resized, this process is costly due to the need to reallocate memory and copy elements.
@@ -54,7 +54,7 @@ Sequential containers can be classified as standard and non-standard, with stand
 3. **Deque**: A container similar to a vector but with the ability to efficiently expand at both ends, making it ideal for operations at the front and back of the sequence.
 4. **List**: A doubly linked list that does not store elements contiguously. It allows quick modifications, such as insertions and deletions at any position, but operations like sorting and iteration are more expensive compared to a vector due to its non-sequential memory structure
 
-## Associative Containers
+### Associative Containers
 Associative containers can be classified as standard and non-standard, with standard containers being the most commonly used. Some notable examples include:
 
 1. **Map**: A collection where the key and value can be different types. Keys must be unique.
@@ -62,7 +62,7 @@ Associative containers can be classified as standard and non-standard, with stan
 3. **Multimap**: Similar to a map, but allows multiple entries with the same key.
 4. **Multiset**: Similar to a set, but allows multiple elements with the same value (duplicate keys).
 
-# Qt Containers
+## Qt Containers
 Like some of C++'s non-standard containers, Qt also defines several containers that can be used, such as:
 
 1. **QStringList**: A class derived from QList<QString>, specifically designed for handling lists of strings.
