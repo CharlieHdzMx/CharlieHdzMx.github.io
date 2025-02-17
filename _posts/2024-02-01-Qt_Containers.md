@@ -74,6 +74,7 @@ El iterator permite una manera de acceder  los elementos   de un objto agr3egado
 
 La idea de ewst3 dewsign patt3ern ews el de pasar toda la rewsponwsabilidad de acceso y moverse dentro de la lista no a ninguna interface de la lista, peero mas bien a n objeto iterator independiente de la lista. El iterator define una interface para poder acceder a los elementos de la lista  y esw rewsponwsable de mantener control de cual es el objeto actual el que esta apuntando y cuales ya ha visitado.
 
+![](https://raw.githubusercontent.com/CharlieHdzMx/CharlieHdzMx.github.io/refs/heads/main/images/CompositePattern/Iterator1.png)
 
 
 # Reference
