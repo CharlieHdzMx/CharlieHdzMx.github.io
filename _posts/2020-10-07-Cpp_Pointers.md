@@ -51,3 +51,10 @@ With the purpose of encourage your curiosity... What's the most effective swap f
 
 ![05](https://github.com/CharlieHdzMx/CharlieHdzMx.github.io/assets/6202653/6de7e8e8-a6c7-4ad5-8b10-26976b9dee49)
 
+# C++ Casts
+* **static_cast**: Explicitly converts the size of a parameter to another type without checking the value being converted. Therefore, it is the programmer's responsibility to ensure that the conversion is valid.
+* **reinterpret_cast**: Casts a type to be interpreted as a sequence of bytes.
+* **const_cast**: Allows the removal of the const qualifier from a variable.
+
+
+
